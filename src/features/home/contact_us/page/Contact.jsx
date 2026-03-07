@@ -3,8 +3,7 @@ import * as yup from "yup";
 import "../style/style.css";
 import Forms from "../components/Forms";
 import Socials from "../components/Socials";
-
-
+import Breadcrumbs from "./../../../../components/breadcrumbs/Breadcrumbs";
 
 const Contact = () => {
   const formik = useFormik({
@@ -18,12 +17,15 @@ const Contact = () => {
   });
 
   return (
-    <section className="container main-section">
-      <form className="contact-page" onSubmit={formik.handleSubmit}>
-        <Forms formik={formik} />
-        <Socials />
-      </form>
-    </section>
+    <>
+      <Breadcrumbs />
+      <section className="container main-section">
+        <form className="contact-page" onSubmit={formik.handleSubmit}>
+          <Forms formik={formik} />
+          <Socials />
+        </form>
+      </section>
+    </>
   );
 };
 
