@@ -3,14 +3,28 @@ import * as yup from "yup";
 import Input from "../../../../components/inputs/Input";
 import "../style/style.css";
 import Button from "../../../../components/buttons/Button";
+import axiosInstance from "../../../../utils/axios";
+import endPoints from "./../../../../constant/endPoints";
+import { useAuth } from "../../../../context/AuthContext";
+import { useNavigate } from "react-router";
+import { dashboardRouts } from "../../../../constant/pageRoutes";
 
 const Login = () => {
+  const { login } = useAuth();
+
+  const nav = useNavigate();
+
   const formik = useFormik({
     initialValues: { username: "", password: "" },
     validationSchema: yup.object({
       username: yup.string().required(),
       password: yup.string().required(),
     }),
+    onSubmit: async (v) => {
+      const { data } = await axiosInstance.post(endPoints.login, v);
+      login(data.data);
+      nav(dashboardRouts.user.page);
+    },
   });
 
   return (

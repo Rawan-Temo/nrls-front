@@ -1,30 +1,18 @@
 import { NavLink } from "react-router";
-import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { dashboardPages } from "../../../constant/pageRoutes";
+
 const name = "diyar direki";
 
 const DashboardSidebar = () => {
   return (
     <aside className="dashboard-sidebar">
       <nav className="links">
-        <NavLink>
-          <FontAwesomeIcon icon={faBarsStaggered} /> <span>test</span>
-        </NavLink>
-        <NavLink to={"tesd2"}>
-          <FontAwesomeIcon icon={faBarsStaggered} /> <span>test</span>
-        </NavLink>
-        <NavLink to={"tesd23"}>
-          <FontAwesomeIcon icon={faBarsStaggered} /> <span>test</span>
-        </NavLink>
-        <NavLink to={"tesd234"}>
-          <FontAwesomeIcon icon={faBarsStaggered} /> <span>test</span>
-        </NavLink>
-        <NavLink to={"tesd2345"}>
-          <FontAwesomeIcon icon={faBarsStaggered} /> <span>test</span>
-        </NavLink>
-        <NavLink to={"tesd23455"}>
-          <FontAwesomeIcon icon={faBarsStaggered} /> <span>test</span>
-        </NavLink>
+        {dashboardPages.map((e) => (
+          <NavLink key={e.to} to={e.to}>
+            <FontAwesomeIcon icon={e.icon} /> <span> {e.title} </span>
+          </NavLink>
+        ))}
       </nav>
       <div className="user">
         <div className="profile"> {name[0]} </div>

@@ -4,7 +4,7 @@ class APIClient {
   constructor(endPoint) {
     this.endPoint = endPoint;
   }
-  getAll = async ({ page = 1, sort = {}, limit = 10, ...params }) => {
+  getAll = async ({ page = 1, sort = {}, page_size = 10, ...params }) => {
     const sortStatus = sort
       ? Object.values(sort)
           .filter((v) => v && v.trim() !== "")
@@ -14,7 +14,7 @@ class APIClient {
     const allParams = {
       ...params,
       page,
-      limit,
+      page_size,
     };
 
     if (sortStatus) allParams.sort = sortStatus;
@@ -41,13 +41,13 @@ class APIClient {
       params: paramFilters,
     });
 
-    const { totalCount, totalPages, data: d } = data;
+    const { total, total_pages, data: d } = data;
 
     return {
       data: d || data,
-      totalCount: totalCount || 0,
-      limit,
-      totalPages: totalPages || Math.floor(totalCount / limit),
+      totalCount: total || 0,
+      page_size,
+      total_pages: total_pages || Math.floor(total / page_size),
     };
   };
 

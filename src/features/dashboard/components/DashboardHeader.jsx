@@ -41,7 +41,11 @@ const DashboardHeader = ({ isClosed, toggleClose }) => {
       </div>
       <div className="header">
         <label htmlFor="pages-search">
-          <input type="text" placeholder="type a keyword ..." />
+          <input
+            type="text"
+            placeholder="type a keyword ..."
+            id="pages-search"
+          />
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </label>
         <div className="icons">

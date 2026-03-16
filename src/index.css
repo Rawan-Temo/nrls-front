@@ -216,6 +216,8 @@ body::-webkit-scrollbar {
   padding: 5px 10px;
   border-radius: 10px;
   font-weight: 600;
+  width: fit-content;
+  margin: auto;
 }
 
 .field-error {

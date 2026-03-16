@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { memo } from "react";
 import Button from "../buttons/Button";
 import { Link } from "react-router";
-import { icons } from "../../constants/icons";
+import { icons } from "../../constant/icons";
 
 const TableNoResults = ({ ...props }) => {
   return (

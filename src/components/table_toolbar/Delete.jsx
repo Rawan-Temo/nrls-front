@@ -4,8 +4,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import IconButton from "./../buttons/IconButton";
 import APIClient from "../../utils/ApiClient";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icons } from "../../constants/icons";
 import { useTranslation } from "react-i18next";
+import { icons } from "../../constant/icons";
 
 const Delete = ({
   setSelectedItems,

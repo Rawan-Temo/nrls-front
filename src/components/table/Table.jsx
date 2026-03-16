@@ -49,7 +49,7 @@ const Table = ({
   hideLimitSelection,
 }) => {
   const [columnsState, setColumnsState] = useState(colmuns || []);
-  const { setLimit, limit } = useDashboardContext();
+  const { setLimit, page_size } = useDashboardContext();
 
   if (loading) return <TableLoading />;
 
@@ -64,7 +64,7 @@ const Table = ({
           {!hideLimitSelection && (
             <SelectOptionInput
               wrapperProps={{ className: "limit" }}
-              placeholder={limit}
+              placeholder={page_size}
               options={[
                 { text: 10, value: 10 },
                 { text: 15, value: 15 },
@@ -108,7 +108,7 @@ const Table = ({
         dataLength={dataLength}
         setPage={setPage}
         setSelectedItems={setSelectedItems}
-        limit={limit}
+        limit={page_size}
       />
     </>
   );

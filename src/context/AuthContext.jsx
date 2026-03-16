@@ -6,12 +6,12 @@ import {
   useCallback,
 } from "react";
 import AuthHelper from "../utils/authHelper";
-import toast from "react-hot-toast";
 import Loading from "./../components/loading/Loading";
 import { Outlet } from "react-router";
 import axiosInstance from "../utils/axios";
 import { extarctErrorMessage } from "../utils/extarctErrorMessage";
 import { useQueryClient } from "@tanstack/react-query";
+import { enqueueSnackbar } from "notistack";
 
 const AuthContext = createContext();
 const authHelper = new AuthHelper();
@@ -26,9 +26,9 @@ export const AuthProvider = () => {
 
   const login = useCallback(
     (data) => {
-      setUser(data.data);
-      authHelper.setToken(data.token);
-      axiosInstance.defaults.headers.common.Authorization = `Bearer ${data.token}`;
+      setUser(data.user);
+      authHelper.setToken(data.access_token);
+      axiosInstance.defaults.headers.common.Authorization = `Bearer ${data.access_token}`;
       query.clear();
     },
     [setUser, query],
@@ -66,7 +66,7 @@ export const AuthProvider = () => {
           const message =
             response?.data?.message || "Operation done successfully";
 
-          toast.success(message);
+          enqueueSnackbar(message, { variant: "success" });
         }
         return response;
       },
@@ -75,7 +75,9 @@ export const AuthProvider = () => {
 
         const message = extarctErrorMessage(error);
 
-        toast.error(message);
+        console.log(message);
+
+        enqueueSnackbar(message, { variant: "error" });
         if (error.response?.status === 401) {
           logout();
         }
@@ -89,19 +91,6 @@ export const AuthProvider = () => {
       axiosInstance.interceptors.response.eject(responseInterceptor);
     };
   }, [logout]);
-
-  const getUserDetails = useCallback(async () => {
-    if (isAuthenticated && !user) {
-      setUserLoading(true);
-      const { data } = await axiosInstance.get("test");
-      setUser(data.data);
-    }
-    setUserLoading(false);
-  }, [isAuthenticated, user]);
-
-  useEffect(() => {
-    getUserDetails();
-  }, [getUserDetails]);
 
   if (userLoading) return <Loading />;
 

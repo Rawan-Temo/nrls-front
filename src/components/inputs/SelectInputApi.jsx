@@ -90,7 +90,7 @@ const SelectInputApi = ({
   const { t } = useTranslation();
   const { data, loadMoreRef, isFetching } = useInfiniteFetch({
     endPoint: endPoint,
-    limit: 3,
+    page_size: 3,
     search: debouncedSearch,
     ...params,
   });

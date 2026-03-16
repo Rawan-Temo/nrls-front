@@ -15,7 +15,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 /**
  * @typedef {Object} customOptionsProps
  * @property {string} title
- * @property {() => void} [onSelectOption]
+ * @property {() => void} [onChange]
  */
 
 /**
@@ -33,6 +33,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
  * @property {string} [errorText]
  * @property {Object} [optionListProps]
  * @property {Object} [wrapperProps]
+ * @property {boolean} [showButton]
  */
 
 /**
@@ -53,9 +54,9 @@ const SelectOptionInput = ({
   notRequired,
   labelIcon,
   icon,
+  showButton,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [highlightIndex, setHighlightIndex] = useState(-1);
 
   const toggleOptionArea = useCallback((e) => {
     e.stopPropagation();
@@ -67,7 +68,6 @@ const SelectOptionInput = ({
       e?.stopPropagation();
       option.onSelectOption ? option.onSelectOption() : onSelectOption(option);
       setIsOpen(false);
-      setHighlightIndex(-1);
     },
     [onSelectOption],
   );
@@ -100,6 +100,11 @@ const SelectOptionInput = ({
     [errorText],
   );
 
+  const placeholderValue = useMemo(() => {
+    const text = value || placeholder;
+    return text || `select ${label}`;
+  }, [value, placeholder, label]);
+
   return (
     <div {...wrapperProps} className={wrapperClassName}>
       {label && (
@@ -115,7 +120,8 @@ const SelectOptionInput = ({
 
       <div onClick={toggleOptionArea} className={placeholderClassName}>
         {icon && <FontAwesomeIcon icon={icon} />}
-        <span className="flex-1 ellipsis">{placeholder}</span>
+        <span className="flex-1 ellipsis">{placeholderValue}</span>
+
         <FontAwesomeIcon icon={faChevronDown} />
 
         {isOpen && (
@@ -126,22 +132,22 @@ const SelectOptionInput = ({
                 {itm.title}
               </h3>
             ))}
-            {options?.map((opt, index) => (
+
+            {options?.map((o, i) => (
               <h3
-                key={opt.text || index}
-                onClick={(e) => handleSelect(opt, e)}
-                className={highlightIndex === index ? "highlight" : ""}
-                {...opt.props}
+                key={o.text || i}
+                onClick={(e) => handleSelect(o, e)}
+                {...o.props}
               >
-                {opt.icon && <FontAwesomeIcon icon={opt.icon} />}
-                {opt.text}
+                {o.icon && <FontAwesomeIcon icon={o.icon} />}
+                {o.text}
               </h3>
             ))}
           </article>
         )}
       </div>
 
-      {value && (
+      {showButton && value && (
         <Button onClick={onIgnore} btnStyleType="outlined" btnType="delete">
           {value}
         </Button>

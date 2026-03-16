@@ -2,7 +2,7 @@ import { memo } from "react";
 import Button from "../buttons/Button";
 import "./popups.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icons } from "../../constants/icons";
+import { icons } from "../../constant/icons";
 
 /**
  * @typedef {Object} divProps

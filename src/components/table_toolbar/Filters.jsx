@@ -6,10 +6,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
-import SelectInputApi from "../inputs/SelectInputApi";
-import { endPoints } from "../../constants/endPoints";
 import { useDebounce } from "use-debounce";
-import { roles } from "../../constants/enums";
 
 /**
  * @typedef {Object} FromToFieldsProps
@@ -37,7 +34,6 @@ const Filters = ({
   filters,
   setFilters,
   hideCreatedAtInputs = false,
-  hideCreatedByInputs = false,
   FromToFields,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -91,26 +87,6 @@ const Filters = ({
               notRequired
             />
           </>
-        )}
-        {!hideCreatedByInputs && role === roles.admin && (
-          <SelectInputApi
-            label={t("created_by")}
-            endPoint={endPoints.users}
-            notRequired
-            optionLabel={(e) => e?.username}
-            placeholder={localFilters?.createdBy?.username || t("all")}
-            onChange={(e) =>
-              setLocalFilters((prev) => ({ ...prev, createdBy: e }))
-            }
-            customOptions={[
-              {
-                onChange: () =>
-                  setLocalFilters((prev) => ({ ...prev, createdBy: "" })),
-                title: t("all"),
-              },
-            ]}
-            params={{ role: roles.admin }}
-          />
         )}
 
         {FromToFields?.map(
