@@ -1,8 +1,11 @@
 import {
   faClose,
+  faFeather,
+  faHashtag,
   faMagnifyingGlass,
   faPenToSquare,
   faPlus,
+  faTags,
   faTrash,
   faUserPlus,
   faUsers,
@@ -16,4 +19,7 @@ export const icons = {
   close: faClose,
   search: faMagnifyingGlass,
   update: faPenToSquare,
+  tags: faHashtag,
+  category: faTags,
+  author: faFeather,
 };

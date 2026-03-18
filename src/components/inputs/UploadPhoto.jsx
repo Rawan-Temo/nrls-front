@@ -4,8 +4,8 @@ import Button from "../buttons/Button";
 import PopUp from "../popup/PopUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCameraRetro } from "@fortawesome/free-solid-svg-icons";
-import { icons } from "../../constants/icons";
 import { useTranslation } from "react-i18next";
+import { icons } from "./../../constant/icons";
 
 function UploadPhoto({
   onChange = () => {},
@@ -16,6 +16,7 @@ function UploadPhoto({
   accept = "image/png, image/jpeg, image/jpg",
   defaultImage,
   notRequired,
+  className,
 }) {
   const [isDragging, setIsDragging] = useState(false);
   const [open, setOpen] = useState(false);
@@ -81,7 +82,7 @@ function UploadPhoto({
   const { t } = useTranslation();
 
   return (
-    <div className="upload-file font-color">
+    <div className={`${className || ""} upload-file font-color`}>
       <label
         className={labelClassName}
         htmlFor={name + (value?.url ? "disabled" : "")}

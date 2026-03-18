@@ -13,6 +13,21 @@ const dashboardRouts = {
     add: `${homeRoutes.dashboard}/users/add`,
     update: (id = ":id") => `${homeRoutes.dashboard}/users/${id}`,
   },
+  author: {
+    page: `${homeRoutes.dashboard}/authors`,
+    add: `${homeRoutes.dashboard}/authors/add`,
+    update: (id = ":id") => `${homeRoutes.dashboard}/authors/${id}`,
+  },
+  tag: {
+    page: `${homeRoutes.dashboard}/tags`,
+    add: `${homeRoutes.dashboard}/tags/add`,
+    update: (id = ":id") => `${homeRoutes.dashboard}/tags/${id}`,
+  },
+  category: {
+    page: `${homeRoutes.dashboard}/categories`,
+    add: `${homeRoutes.dashboard}/categories/add`,
+    update: (id = ":id") => `${homeRoutes.dashboard}/categories/${id}`,
+  },
 };
 
 const dashboardPages = [
@@ -25,6 +40,21 @@ const dashboardPages = [
     title: "add user",
     to: dashboardRouts.user.add,
     icon: icons.addUser,
+  },
+  {
+    title: "tags",
+    to: dashboardRouts.tag.page,
+    icon: icons.tags,
+  },
+  {
+    title: "categories",
+    to: dashboardRouts.category.page,
+    icon: icons.category,
+  },
+  {
+    title: "authors",
+    to: dashboardRouts.author.page,
+    icon: icons.author,
   },
 ];
 

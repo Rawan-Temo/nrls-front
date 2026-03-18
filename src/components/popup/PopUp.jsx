@@ -7,9 +7,9 @@
 import { memo, useMemo } from "react";
 import IconButton from "../buttons/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icons } from "../../constants/icons";
 import "./popups.css";
 import { useTranslation } from "react-i18next";
+import { icons } from "../../constant/icons";
 
 /**
  * @param {divProps & React.HTMLAttributes<HTMLDivElement>} props

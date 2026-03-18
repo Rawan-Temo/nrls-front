@@ -12,12 +12,12 @@ const TableHeader = ({
   setSort,
   data,
   notSelectIf,
+  sortBy,
 }) => {
   const updateSortStatus = useCallback(
-    (column, e) => {
+    (column) => {
       setSort((prev) => {
         const prevStatus = prev[column.name]?.startsWith("-");
-        e.target.parentElement.className = prevStatus ? "a-z" : "z-a";
         return {
           [column.name]: `${prevStatus ? "" : "-"}${column.name}`,
         };
@@ -70,11 +70,20 @@ const TableHeader = ({
         {column?.map((th) => {
           if (th.hidden) return;
 
-          const { allowedTo, headerName, sort } = th;
+          const { allowedTo, headerName, sort, name } = th;
 
           if (!allowedTo || allowedTo?.includes(role))
             return (
-              <th key={headerName}>
+              <th
+                key={headerName}
+                className={
+                  !sortBy[name]
+                    ? ""
+                    : sortBy[name]?.startsWith("-")
+                      ? "z-a"
+                      : "a-z"
+                }
+              >
                 {t(headerName)}
                 {sort && (
                   <FontAwesomeIcon

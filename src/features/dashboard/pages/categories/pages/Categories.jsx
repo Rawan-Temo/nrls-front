@@ -1,20 +1,18 @@
 import { useState } from "react";
-import dateFormatter from "./../../../../../utils/dateFormatter";
+import dateFormatter from "../../../../../utils/dateFormatter";
 import { useDashboardContext } from "../../../../../context/DashboardContext";
-import { useAuth } from "../../../../../context/AuthContext";
-import { useFetchData } from "./../../../../../hooks/useFetchData";
+import { useFetchData } from "../../../../../hooks/useFetchData";
 import endPoints from "../../../../../constant/endPoints";
-import { formatInputsData } from "./../../../../../utils/formatInputsData";
+import { formatInputsData } from "../../../../../utils/formatInputsData";
 import { useTranslation } from "react-i18next";
-import Breadcrumbs from "./../../../../../components/breadcrumbs/Breadcrumbs";
-import TableToolBar from "./../../../../../components/table_toolbar/TableToolBar";
-import Search from "./../../../../../components/table_toolbar/Search";
-import Delete from "./../../../../../components/table_toolbar/Delete";
+import Breadcrumbs from "../../../../../components/breadcrumbs/Breadcrumbs";
+import TableToolBar from "../../../../../components/table_toolbar/TableToolBar";
+import Search from "../../../../../components/table_toolbar/Search";
+import Delete from "../../../../../components/table_toolbar/Delete";
 import { dashboardRouts } from "../../../../../constant/pageRoutes";
-import Add from "./../../../../../components/table_toolbar/Add";
+import Add from "../../../../../components/table_toolbar/Add";
 import Table from "../../../../../components/table/Table";
-import { colors } from "../../../../../constant/colors";
-import UsersFilter from "../components/UsersFilter";
+import CategoriesFilter from "../components/CategoriesFilter";
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icons } from "../../../../../constant/icons";
@@ -22,52 +20,24 @@ import Button from "../../../../../components/buttons/Button";
 
 const column = [
   {
-    name: "username",
-    headerName: "user.username",
-    getCell: ({ row, user, t }) => (
-      <div className="center gap-10">
-        {row.username}
-        {user?.id === row.id && <p>( {t("user.me")} )</p>}
-      </div>
-    ),
+    name: "name_ar",
+    headerName: "name_ar",
     sort: true,
   },
   {
-    name: "role",
-    headerName: "user.role",
-    getCell: ({ row, t }) => (
-      <div className="gap-10 center enum-style">{t(row.role)}</div>
-    ),
-  },
-  {
-    name: "full_name",
-    headerName: "user.full_name",
+    name: "name_en",
+    headerName: "name_en",
     sort: true,
   },
   {
-    name: "is_active",
-    headerName: "user.is_active",
-    getCell: ({ row }) => (
-      <div
-        className="gap-10 center enum-style"
-        style={{
-          color: colors[row.is_active ? "green" : "red"].color,
-          backgroundColor: colors[row.is_active ? "green" : "red"].bg,
-        }}
-      >
-        {row.is_active ? "yes" : "no"}
-      </div>
-    ),
+    name: "name_ku",
+    headerName: "name_ku",
+    sort: true,
   },
   {
-    name: "email",
-    headerName: "user.email",
-    hidden: true,
-  },
-  {
-    name: "created_by_username",
-    headerName: "created_by",
-    getCell: ({ row }) => row.created_by_username,
+    name: "slug",
+    headerName: "slug",
+    sort: true,
   },
   {
     name: "created_at",
@@ -80,7 +50,7 @@ const column = [
     headerName: "actions",
     getCell: ({ row }) => (
       <div className="center">
-        <Link to={dashboardRouts.user.update(row.id)}>
+        <Link to={dashboardRouts.category.update(row.id)}>
           <Button btnStyleType="transparent">
             <FontAwesomeIcon icon={icons.update} />
           </Button>
@@ -90,7 +60,7 @@ const column = [
   },
 ];
 
-const AllUsers = () => {
+const Categories = () => {
   const [page, setPage] = useState(1);
   const [selectedItems, setSelectedItems] = useState(new Set());
   const [sort, setSort] = useState({});
@@ -98,10 +68,8 @@ const AllUsers = () => {
   const [filter, setFilters] = useState({});
   const { page_size } = useDashboardContext();
 
-  const { user } = useAuth();
-
   const { data, isLoading, error, refetch } = useFetchData({
-    endPoints: endPoints.users,
+    endPoints: endPoints.categories,
     page,
     page_size,
     ordering: sort,
@@ -116,17 +84,17 @@ const AllUsers = () => {
       <Breadcrumbs />
 
       <div className="table-container">
-        <TableToolBar title={t("pages.users")}>
+        <TableToolBar title={t("pages.Categories")}>
           <Search setSearch={setSearch} />
           <Delete
             data={data?.data}
-            endPoint={`${endPoints.users}bulk-deleted/`}
+            endPoint={`${endPoints.categories}bulk-hard-delete/`}
             selectedItems={selectedItems}
             setPage={setPage}
             setSelectedItems={setSelectedItems}
           />
-          <Add path={dashboardRouts.user.add} />
-          <UsersFilter filters={filter} setFilters={setFilters} />
+          <Add path={dashboardRouts.category.add} />
+          <CategoriesFilter filters={filter} setFilters={setFilters} />
         </TableToolBar>
         <Table
           colmuns={column}
@@ -141,8 +109,7 @@ const AllUsers = () => {
           selectable
           error={error}
           onRefetch={refetch}
-          notSelectIf={(row) => row?.id === user?.id}
-          addBtnProps={{ to: dashboardRouts.user.add }}
+          addBtnProps={{ to: dashboardRouts.category.add }}
           sortBy={sort}
         />
       </div>
@@ -150,4 +117,4 @@ const AllUsers = () => {
   );
 };
 
-export default AllUsers;
+export default Categories;

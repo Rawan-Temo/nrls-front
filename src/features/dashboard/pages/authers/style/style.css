@@ -1,0 +1,19 @@
+.author-profile-tabel {
+  width: 30px;
+  height: 30px;
+  background-color: var(--body-color);
+  border-radius: 50%;
+  color: var(--font-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  box-shadow: var(--box-shadow);
+}
+.author-profile {
+  max-width: 50%;
+  background-color: var(--body-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+}

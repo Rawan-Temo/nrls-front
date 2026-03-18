@@ -4,9 +4,9 @@ class APIClient {
   constructor(endPoint) {
     this.endPoint = endPoint;
   }
-  getAll = async ({ page = 1, order = {}, page_size = 10, ...params }) => {
-    const sortStatus = order
-      ? Object.values(order)
+  getAll = async ({ page = 1, ordering = {}, page_size = 10, ...params }) => {
+    const sortStatus = ordering
+      ? Object.values(ordering)
           .filter((v) => v && v.trim() !== "")
           .join(",")
       : "";
@@ -17,7 +17,7 @@ class APIClient {
       page_size,
     };
 
-    if (sortStatus) allParams.order = sortStatus;
+    if (sortStatus) allParams.ordering = sortStatus;
 
     const paramFilters = new URLSearchParams();
 

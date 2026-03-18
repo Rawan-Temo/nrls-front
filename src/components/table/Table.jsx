@@ -47,6 +47,7 @@ const Table = ({
   addBtnProps,
   notSelectIf = () => {},
   hideLimitSelection,
+  sortBy,
 }) => {
   const [columnsState, setColumnsState] = useState(colmuns || []);
   const { setLimit, page_size } = useDashboardContext();
@@ -91,6 +92,7 @@ const Table = ({
               data={data}
               selectedItems={selectedItems}
               notSelectIf={notSelectIf}
+              sortBy={sortBy}
             />
             <TableBody
               column={columnsState}
