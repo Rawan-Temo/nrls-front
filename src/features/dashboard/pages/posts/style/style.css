@@ -1,3 +1,9 @@
+.dashboard-form .post-cover-img {
+  background-color: var(--body-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
 .post-tabs {
   display: flex;
   gap: 15px;
@@ -11,11 +17,13 @@
   padding-inline: 10px;
   cursor: pointer;
   opacity: 0.7;
-  letter-spacing: 1px;
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
 }
 
 .post-tabs .active,
-.post-tabs p:hover {
+.post-tabs p:not(.error):hover {
   color: var(--main-color);
   font-weight: 600;
 }
@@ -23,6 +31,13 @@
 .post-tabs .active {
   border-bottom: solid 2px var(--main-color);
   opacity: 1;
+}
+
+.post-tabs .error {
+  font-weight: 600;
+  opacity: 1;
+  border-bottom: solid 2px red;
+  color: red;
 }
 
 .dashboard-form .post-inputs {

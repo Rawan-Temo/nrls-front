@@ -5,20 +5,17 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import Breadcrumbs from "../../../../../components/breadcrumbs/Breadcrumbs";
-import Input from "../../../../../components/inputs/Input";
-import SelectOptionInput from "../../../../../components/inputs/SelectOptionInput";
 import Button from "../../../../../components/buttons/Button";
-import "../style/style.css";
-import { authorSchema } from "./../../../../../schema/author";
+import { postSchema } from "./../../../../../schema/post";
 import EditorSection from "./../components/EditorSection";
-import { allTyps } from "../../../../../constant/enums";
-import SelectInputApi from "./../../../../../components/inputs/SelectInputApi";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import InfoInputsSection from "./../components/InfoInputsSection";
-import { languages } from "./../../../../../constant/languages";
 import MoreInfoInputs from "./../components/MoreInfoInputs";
+import "../style/style.css";
+import PostTabs from "./../components/PostTabs";
+import UploadPhoto from "../../../../../components/inputs/UploadPhoto";
 
-const api = new APIClient(endPoints.authors);
+const api = new APIClient(endPoints.posts);
 
 const AddPost = () => {
   const { t, i18n } = useTranslation();
@@ -27,27 +24,30 @@ const AddPost = () => {
 
   const formik = useFormik({
     initialValues: {
+      featured_image: "",
       title: "",
       excerpt: "",
       content: "",
+      original_post_id: "",
       content_type: "",
       category_id: "",
-      language,
       author_id: "",
+      language,
+      published_at: "",
       is_published: true,
     },
-    validationSchema: authorSchema,
+    validationSchema: postSchema,
     onSubmit: (d) => {
       const form = new FormData();
 
       Object.entries(d).map(([key, value]) => {
-        if (key !== "profile_image" && value) {
+        if (key !== "featured_image" && value) {
           form.append(key, value);
         }
       });
 
-      if (d.profile_image?.file) {
-        form.append("profile_image", d.profile_image.file);
+      if (d.featured_image?.file) {
+        form.append("featured_image", d.featured_image.file);
       }
 
       handleConfirm.mutate(form);
@@ -59,28 +59,39 @@ const AddPost = () => {
   const handleConfirm = useMutation({
     mutationFn: (d) => api.addData(d),
     onSuccess: () => {
-      query.invalidateQueries([endPoints.authors]);
+      query.invalidateQueries([endPoints.posts]);
       nav(-1);
     },
   });
+
+  const [tab, setTab] = useState("format");
 
   return (
     <>
       <Breadcrumbs />
 
-      <nav className="post-tabs">
-        <p className="active"> المحتوى والتنسيق </p>
-        <p> بيانات الخبر </p>
-        <p> مزيد من التفاصيل </p>
-        <p> main info </p>
-      </nav>
+      <PostTabs errors={formik.errors} setTab={setTab} tab={tab} />
 
       <form className="dashboard-form" onSubmit={formik.handleSubmit}>
-        <EditorSection formik={formik} t={t} />
+        {tab === "format" && <EditorSection formik={formik} t={t} />}
 
-        <InfoInputsSection formik={formik} language={language} t={t} />
+        {tab === "info" && (
+          <InfoInputsSection formik={formik} language={language} t={t} />
+        )}
 
-        <MoreInfoInputs formik={formik} t={t} />
+        {tab === "moreInfo" && <MoreInfoInputs formik={formik} t={t} />}
+        {tab === "image" && (
+          <UploadPhoto
+            name="featured_image"
+            title="featured_image"
+            errorText={t(formik.errors?.featured_image)}
+            notRequired
+            value={formik.values.featured_image}
+            onChange={(e) => formik.setFieldValue("featured_image", e)}
+            className="post-cover-img"
+            revoke={false}
+          />
+        )}
 
         <Button type="submit"> save </Button>
       </form>

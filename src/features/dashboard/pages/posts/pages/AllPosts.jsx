@@ -1,4 +1,7 @@
 const AllPosts = () => {
+
+  
+
   return <div></div>;
 };
 

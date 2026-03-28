@@ -17,6 +17,7 @@ function UploadPhoto({
   defaultImage,
   notRequired,
   className,
+  revoke = true,
 }) {
   const [isDragging, setIsDragging] = useState(false);
   const [open, setOpen] = useState(false);
@@ -51,11 +52,11 @@ function UploadPhoto({
     if (!value?.file) setIsDragging(false);
 
     return () => {
-      if (value?.file && value?.url) {
+      if (value?.file && value?.url && revoke) {
         URL.revokeObjectURL(value.url);
       }
     };
-  }, [value]);
+  }, [value, revoke]);
 
   const handleDragEnter = useCallback(() => setIsDragging(true), []);
   const handleDragLeave = useCallback(() => setIsDragging(false), []);
