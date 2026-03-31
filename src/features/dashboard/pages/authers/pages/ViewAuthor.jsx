@@ -7,6 +7,7 @@ import Skeleton from "./../../../../../components/skeleton/Skeleton";
 import Breadcrumbs from "./../../../../../components/breadcrumbs/Breadcrumbs";
 import ImageSection from "../components/ImageSection";
 import ProfileInfoSection from "./../components/ProfileInfoSection";
+import AuthorPopsts from "../components/AuthorPopsts";
 
 const api = new APIClient(endPoints.authors);
 const ViewAuthor = () => {
@@ -28,11 +29,7 @@ const ViewAuthor = () => {
         <ProfileInfoSection data={data} />
       </main>
 
-      <div className="author-post-results-container">
-        <h1 data-count={5} className="author-post-results">
-          posts
-        </h1>
-      </div>
+      <AuthorPopsts />
     </>
   );
 };

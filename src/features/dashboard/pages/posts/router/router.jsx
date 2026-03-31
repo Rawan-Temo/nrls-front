@@ -4,6 +4,7 @@ import PageFallback from "./../../../../../components/PageFallBack";
 const AllPosts = lazy(() => import("../pages/AllPosts"));
 const AddPost = lazy(() => import("../pages/AddPost"));
 const UpdatePost = lazy(() => import("../pages/UpdatePost"));
+const ViewPost = lazy(() => import("../pages/ViewPost"));
 
 export const postsRouter = [
   {
@@ -27,6 +28,14 @@ export const postsRouter = [
     element: (
       <PageFallback>
         <UpdatePost />
+      </PageFallback>
+    ),
+  },
+  {
+    path: dashboardRouts.post.view(),
+    element: (
+      <PageFallback>
+        <ViewPost />
       </PageFallback>
     ),
   },
