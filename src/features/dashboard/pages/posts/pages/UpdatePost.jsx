@@ -59,6 +59,7 @@ const UpdatePost = () => {
     queryFn: async () => {
       const { data } = await axiosInstance.get(`${endPoints.surveyPost}${id}/`);
       const surveyData = data?.data?.[0];
+      if (!surveyData) return null;
 
       const { data: options } = await axiosInstance.get(
         `${endPoints.surveyOptionsById}${surveyData?.id}/`,

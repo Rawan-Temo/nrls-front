@@ -75,6 +75,8 @@ const AddSurvey = ({ formik, t }) => {
               placeholder={`Option ${index + 1}`}
               label={`Option ${index + 1}`}
               errorText={formik.errors?.options?.[index]?.option_text}
+              elementType="textarea"
+              rows={3}
             />
             {opt.id && <p className="survey-count">{opt.vote_count} vote </p>}
             <IconButton

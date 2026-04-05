@@ -4,6 +4,8 @@ import imgServerSrc from "../../../../../utils/imgServerSrc";
 import ImgViewPopup from "../../../../../components/popup/ImgViewPopup";
 import PostComments from "./PostComments";
 import "../style/style.css";
+import ViewFiles from "./ViewFiles";
+import ViewSurvey from "./ViewSurvey";
 
 const PostViewMainSections = ({ data, authorView, language }) => {
   const [showImg, setShowImg] = useState(false);
@@ -48,6 +50,9 @@ const PostViewMainSections = ({ data, authorView, language }) => {
             ))}
           </div>
         )}
+
+        <ViewFiles id={data?.id} />
+        <ViewSurvey id={data?.id} />
 
         <PostComments id={data?.id} />
       </main>

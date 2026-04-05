@@ -54,6 +54,7 @@ const ViewPost = () => {
           data={data}
           language={language}
         />
+        
         <aside className="post-sidebar">
           <SideBarMainInfo
             authorView={dashboardRouts.author.view}

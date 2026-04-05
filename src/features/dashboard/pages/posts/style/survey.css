@@ -1,0 +1,38 @@
+.survey-container .question {
+  line-height: 1;
+  color: var(--main-color);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.survey-container .options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+.survey-container .options .option {
+  padding: 10px;
+  background-color: var(--transparent-color);
+  border-radius: 5px;
+  border: solid 1px var(--main-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.5;
+}
+.survey-container .options .option p {
+  width: 10px;
+  height: 10px;
+  border: solid 2px var(--main-color);
+  border-radius: 50%;
+}
+
+.survey-container .options .option.active {
+  background-color: var(--main-color);
+  color: white;
+}
+.survey-container .options .option.active p {
+  background-color: white;
+}
