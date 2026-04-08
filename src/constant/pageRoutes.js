@@ -9,7 +9,7 @@ const homeRoutes = {
     view: (id = ":id") => `/author/${id}`,
   },
   posts: {
-    page: `/posts`,
+    page: `/posts123`,
     view: (id = ":id") => `/posts/${id}`,
   },
 };
