@@ -7,21 +7,25 @@ import { useTranslation } from "react-i18next";
 import Breadcrumbs from "./../../../../../components/breadcrumbs/Breadcrumbs";
 import TableToolBar from "./../../../../../components/table_toolbar/TableToolBar";
 import Search from "./../../../../../components/table_toolbar/Search";
-import Delete from "./../../../../../components/table_toolbar/Delete";
 import Table from "../../../../../components/table/Table";
 import CreateBackup from "../components/CreateBackup";
 import "../style/style.css";
 import Button from "../../../../../components/buttons/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExchangeAlt, faUndo } from "@fortawesome/free-solid-svg-icons";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import Restore from "../components/Restore";
 import Replace from "../components/Replace";
+import { icons } from "../../../../../constant/icons";
+import Delete from "../components/Delete";
+import { useMutation } from "@tanstack/react-query";
+import axiosInstance from "../../../../../utils/axios";
+import UploadBackup from "../components/UploadBackup";
 
 const Backups = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
   const [replace, setReplace] = useState(null);
   const [restore, setRestore] = useState(null);
   const [page, setPage] = useState(1);
-  const [selectedItems, setSelectedItems] = useState(new Set());
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
   const { page_size } = useDashboardContext();
@@ -35,6 +39,11 @@ const Backups = () => {
   });
 
   const { t } = useTranslation();
+
+  const handleDownload = useMutation({
+    mutationFn: async (name) =>
+      await axiosInstance.get(`${endPoints.backup}download/${name}/`),
+  });
 
   const column = useMemo(
     () => [
@@ -70,9 +79,32 @@ const Backups = () => {
             <Button
               btnStyleType="transparent"
               btnType="delete"
+              onClick={() => setSelectedFile(row.filename)}
+            >
+              <FontAwesomeIcon icon={icons.delete} />
+            </Button>
+
+            <Button
+              btnStyleType="transparent"
+              btnType="delete"
+              onClick={() => handleDownload.mutate(row.filename)}
+            >
+              <FontAwesomeIcon icon={faDownload} />
+            </Button>
+          </div>
+        ),
+      },
+      {
+        name: "backup actions",
+        headerName: "backup actions",
+        getCell: ({ row }) => (
+          <div className="center gap-10">
+            <Button
+              btnStyleType="transparent"
+              btnType="update"
               onClick={() => setReplace(row)}
             >
-              <FontAwesomeIcon icon={faUndo} />
+              <FontAwesomeIcon icon={icons.replaceBackup} />
               replace
             </Button>
             <Button
@@ -80,14 +112,14 @@ const Backups = () => {
               btnType="save"
               onClick={() => setRestore(row)}
             >
-              <FontAwesomeIcon icon={faExchangeAlt} />
+              <FontAwesomeIcon icon={icons.restoreBackup} />
               restore
             </Button>
           </div>
         ),
       },
     ],
-    [],
+    [handleDownload],
   );
 
   return (
@@ -97,14 +129,8 @@ const Backups = () => {
       <div className="table-container">
         <TableToolBar title={t("pages.backup")}>
           <Search setSearch={setSearch} />
-          <Delete
-            data={data?.data}
-            endPoint={`${endPoints.backup}bulk-hard-delete/`}
-            selectedItems={selectedItems}
-            setPage={setPage}
-            setSelectedItems={setSelectedItems}
-          />
           <CreateBackup />
+          <UploadBackup />
         </TableToolBar>
         <Table
           colmuns={column}
@@ -112,9 +138,7 @@ const Backups = () => {
           data={data?.data}
           dataLength={data?.totalCount}
           loading={isLoading}
-          selectedItems={selectedItems}
           setPage={setPage}
-          setSelectedItems={setSelectedItems}
           setSort={setSort}
           error={error}
           onRefetch={refetch}
@@ -123,6 +147,9 @@ const Backups = () => {
       </div>
       {restore && <Restore restore={restore} setRestore={setRestore} />}
       {replace && <Replace replace={replace} setReplace={setReplace} />}
+      {selectedFile && (
+        <Delete file={selectedFile} setSelectedFile={setSelectedFile} />
+      )}
     </>
   );
 };

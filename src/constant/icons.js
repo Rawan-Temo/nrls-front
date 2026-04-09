@@ -2,6 +2,7 @@ import {
   faClose,
   faDatabase,
   faEnvelope,
+  faExchangeAlt,
   faEye,
   faFeather,
   faFilePdf,
@@ -15,6 +16,7 @@ import {
   faShareFromSquare,
   faTags,
   faTrash,
+  faUndo,
   faUserPlus,
   faUsers,
   faVideo,
@@ -40,4 +42,6 @@ export const icons = {
   video: faVideo,
   audio: faMusic,
   backup: faDatabase,
+  replaceBackup: faUndo,
+  restoreBackup: faExchangeAlt,
 };

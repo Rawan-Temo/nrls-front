@@ -49,7 +49,7 @@ const Login = () => {
           value={formik.values.password}
           type="password"
         />
-        <Button>submit</Button>
+        <Button type="submit">submit</Button>
       </form>
     </section>
   );
