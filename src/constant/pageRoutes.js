@@ -40,6 +40,11 @@ const dashboardRouts = {
     add: `${homeRoutes.dashboard}/categories/add`,
     update: (id = ":id") => `${homeRoutes.dashboard}/categories/${id}`,
   },
+  events: {
+    page: `${homeRoutes.dashboard}/events`,
+    add: `${homeRoutes.dashboard}/events/add`,
+    update: (id = ":id") => `${homeRoutes.dashboard}/events/${id}`,
+  },
   post: {
     page: `${homeRoutes.dashboard}/posts`,
     add: `${homeRoutes.dashboard}/posts/add`,
@@ -68,6 +73,11 @@ const dashboardPages = [
     title: "posts",
     to: dashboardRouts.post.page,
     icon: icons.posts,
+  },
+  {
+    title: "events",
+    to: dashboardRouts.events.page,
+    icon: icons.events,
   },
   {
     title: "add post",

@@ -1,4 +1,5 @@
 import {
+  faCalendarDays,
   faClose,
   faDatabase,
   faEnvelope,
@@ -37,6 +38,7 @@ export const icons = {
   view: faEye,
   email: faEnvelope,
   posts: faNewspaper,
+  events: faCalendarDays,
   image: faImage,
   pdf: faFilePdf,
   video: faVideo,

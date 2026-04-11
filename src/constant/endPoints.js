@@ -2,6 +2,7 @@ const endPoints = {
   users: "users/",
   authors: "authors/",
   tags: "tags/",
+  events: "events/",
   categories: "categories/",
   login: "login/",
   logout: "logout/",

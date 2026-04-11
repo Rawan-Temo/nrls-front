@@ -12,8 +12,10 @@ import Tooltip from "../tooltip/Tooltip";
 import useDarkMode from "./../../hooks/useDarkMode";
 import { homeRoutes } from "../../constant/pageRoutes";
 import Search from "./Search";
+import AuthHelper from "../../utils/authHelper";
 
 const Header = () => {
+  const isAuthenticated = new AuthHelper().isAuthenticated();
   const currentDate = useMemo(
     () =>
       new Date().toLocaleDateString("ar-SY", {
@@ -55,20 +57,64 @@ const Header = () => {
       <div className="bottom-header container">
         <nav>
           <NavLink to={"/"}>home</NavLink>
-          <NavLink to={homeRoutes.about}>about</NavLink>
+
+          <NavLink to={"/test"}>
+            <div>
+              موضوعات وقضايا <FontAwesomeIcon icon={faChevronDown} />
+            </div>
+            <article>
+              <p>دراسات </p>
+              <p>تحليلات</p>
+              <p>مقال رأي </p>
+              <p>ملفات</p>
+            </article>
+          </NavLink>
+
           <NavLink to={"/dsa"}>
             <div>
-              media <FontAwesomeIcon icon={faChevronDown} />
+              وسائط <FontAwesomeIcon icon={faChevronDown} />
             </div>
             <article>
               <p>test</p>
-              <p>test</p>
+            </article>
+          </NavLink>
+
+          <NavLink to={"/dsa"}>
+            <div>
+              فعاليات و نشاطات <FontAwesomeIcon icon={faChevronDown} />
+            </div>
+            <article>
               <p>test</p>
             </article>
           </NavLink>
+
+          <NavLink to={"/dsa"}>
+            <div>
+              استبيانات <FontAwesomeIcon icon={faChevronDown} />
+            </div>
+            <article>
+              <p>test</p>
+            </article>
+          </NavLink>
+
+          <NavLink to={"/dsa"}>
+            <div>
+              اصدارات
+              <FontAwesomeIcon icon={faChevronDown} />
+            </div>
+            <article>
+              <p>test</p>
+            </article>
+          </NavLink>
+
+          <NavLink to={homeRoutes.about}>about</NavLink>
           <NavLink to={homeRoutes.contact}>contact us</NavLink>
-          <NavLink to={homeRoutes.login}>login</NavLink>
-          <NavLink to={homeRoutes.dashboard}>dashboard</NavLink>
+
+          {isAuthenticated ? (
+            <NavLink to={homeRoutes.dashboard}>dashboard</NavLink>
+          ) : (
+            <NavLink to={homeRoutes.login}>login</NavLink>
+          )}
         </nav>
 
         <Search />
