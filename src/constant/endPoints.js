@@ -16,6 +16,7 @@ const endPoints = {
   postFiles: "media-files/by-post/",
   surveyPost: "surveys/by-post/",
   backup: "backup/",
+  statistics: "posts/statistics/",
 };
 
 export default endPoints;

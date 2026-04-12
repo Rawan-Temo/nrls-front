@@ -4,6 +4,7 @@ import DashboardSidebar from "./DashboardSidebar";
 import { useCallback, useState } from "react";
 import DashboardHeader from "./DashboardHeader";
 import { DashboardProvider } from "../../../context/DashboardContext";
+import ProtectedRoute from "./../../../components/ProtectedRoute";
 
 const DasboardLayout = () => {
   const [isClosed, setIsClosed] = useState(
@@ -21,17 +22,19 @@ const DasboardLayout = () => {
   );
 
   return (
-    <DashboardProvider>
-      <DashboardHeader isClosed={isClosed} toggleClose={toggleClose} />
+    <ProtectedRoute>
+      <DashboardProvider>
+        <DashboardHeader isClosed={isClosed} toggleClose={toggleClose} />
 
-      <main className={`dashboard-container ${isClosed ? "closed" : ""}`}>
-        <DashboardSidebar />
+        <main className={`dashboard-container ${isClosed ? "closed" : ""}`}>
+          <DashboardSidebar />
 
-        <div className="dashboard-content">
-          <Outlet />
-        </div>
-      </main>
-    </DashboardProvider>
+          <div className="dashboard-content">
+            <Outlet />
+          </div>
+        </main>
+      </DashboardProvider>
+    </ProtectedRoute>
   );
 };
 

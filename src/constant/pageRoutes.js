@@ -62,6 +62,11 @@ const dashboardRouts = {
 
 const dashboardPages = [
   {
+    title: "dashboard",
+    to: homeRoutes.dashboard,
+    icon: icons.dashboard,
+  },
+  {
     title: "users",
     to: dashboardRouts.user.page,
     icon: icons.users,

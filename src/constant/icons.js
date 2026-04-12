@@ -1,5 +1,6 @@
 import {
   faCalendarDays,
+  faChartSimple,
   faClose,
   faDatabase,
   faEnvelope,
@@ -46,4 +47,5 @@ export const icons = {
   backup: faDatabase,
   replaceBackup: faUndo,
   restoreBackup: faExchangeAlt,
+  dashboard: faChartSimple,
 };
