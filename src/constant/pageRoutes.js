@@ -113,4 +113,13 @@ const dashboardPages = [
   },
 ];
 
-export { homeRoutes, dashboardPages, dashboardRouts };
+const searchPages = [
+  ...dashboardPages,
+  { title: "add_author", to: dashboardRouts.author.add },
+  { title: "add_tag", to: dashboardRouts.tag.add },
+  { title: "add_category", to: dashboardRouts.category.add },
+  { title: "add_event", to: dashboardRouts.events.add },
+  { title: "home", to: "/" },
+];
+
+export { homeRoutes, dashboardPages, dashboardRouts, searchPages };
