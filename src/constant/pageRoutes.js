@@ -12,6 +12,7 @@ const homeRoutes = {
     page: (name = ":name") => `/${name}`,
     view: (name = ":name", id = ":id") => `/${name}/${id}`,
     viewSurvey: (name = ":name", id = ":id") => `/${name}/${id}/survey`,
+    events: (name = ":name", id = ":id") => `/${name}/${id}/events`,
   },
 };
 
@@ -51,6 +52,7 @@ const dashboardRouts = {
     view: (id = ":id") => `${homeRoutes.dashboard}/posts/${id}`,
     update: (id = ":id") => `${homeRoutes.dashboard}/posts/${id}/update`,
     viewSurvey: (id = ":id") => `${homeRoutes.dashboard}/posts/${id}/survey`,
+    events: (id = ":id") => `${homeRoutes.dashboard}/posts/${id}/events`,
     addSurvey: (post = ":post") =>
       `${homeRoutes.dashboard}/posts/${post}/survey/add`,
     updateSurvey: (post = ":post", id = ":id") =>

@@ -15,6 +15,7 @@ import SideBarMainInfo from "../../../dashboard/pages/posts/components/SideBarMa
 import SharePost from "../../../dashboard/pages/posts/components/SharePost";
 import "../style/style.css";
 import MoreResults from "../components/MoreResults";
+import Events from "../../../dashboard/pages/posts/components/Events";
 
 const api = new APIClient(endPoints.posts);
 
@@ -68,6 +69,8 @@ const ViewPost = () => {
             <div className="actions">
               <SharePost id={id} name={data?.content_type} />
             </div>
+
+            <Events post={data} />
 
             {data?.author && (
               <MoreFromAuthor

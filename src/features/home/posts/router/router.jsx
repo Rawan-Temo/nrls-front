@@ -4,6 +4,7 @@ import PageFallback from "./../../../../components/PageFallBack";
 const AllPosts = lazy(() => import("../pages/AllPosts"));
 const ViewPost = lazy(() => import("../pages/ViewPost"));
 const PostSurvey = lazy(() => import("../pages/PostSurvey"));
+const ViewEvents = lazy(() => import("../pages/ViewEvents"));
 
 export const postsRouter = [
   {
@@ -27,6 +28,14 @@ export const postsRouter = [
     element: (
       <PageFallback>
         <PostSurvey />
+      </PageFallback>
+    ),
+  },
+  {
+    path: homeRoutes.posts.events(),
+    element: (
+      <PageFallback>
+        <ViewEvents />
       </PageFallback>
     ),
   },

@@ -11,8 +11,9 @@ import { useState } from "react";
 import ConfirmPopUp from "../../../../../components/popup/ConfirmPopUp";
 import IconButton from "../../../../../components/buttons/IconButton";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import "../style/style.css";
 
-const EventComponent = ({ data }) => {
+const EventComponent = ({ data, actions }) => {
   const query = useQueryClient();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -52,42 +53,55 @@ const EventComponent = ({ data }) => {
           <p>attendees_count</p>
           <div className="event-actions">
             <span> {data?.attendees_count} </span>
-            <IconButton
-              styleType="transparent"
-              color="save"
-              icon={faPlus}
-              onClick={() => handleCountAction.mutate("increment-attendees")}
-            />
-            <IconButton
-              styleType="transparent"
-              color="delete"
-              icon={faMinus}
-              onClick={() => handleCountAction.mutate("decrement-attendees")}
-            />
+            {actions && (
+              <>
+                <IconButton
+                  styleType="transparent"
+                  color="save"
+                  icon={faPlus}
+                  onClick={() =>
+                    handleCountAction.mutate("increment-attendees")
+                  }
+                />
+                <IconButton
+                  styleType="transparent"
+                  color="delete"
+                  icon={faMinus}
+                  onClick={() =>
+                    handleCountAction.mutate("decrement-attendees")
+                  }
+                />
+              </>
+            )}
           </div>
         </div>
 
         <div>
           <p>created_at</p>
-          <span> {dateFormatter(data?.created_at)} </span>
+          <span> {dateFormatter(data?.created_at, "fullDate")} </span>
         </div>
 
-        <div className="actions" style={{ margin: "0" }}>
-          <Link to={dashboardRouts.events.update(data?.id)} className="flex-1">
-            <Button btnStyleType="transparent" className="w-100">
-              <FontAwesomeIcon icon={icons.update} /> update
+        {actions && (
+          <div className="actions" style={{ margin: "0" }}>
+            <Link
+              to={dashboardRouts.events.update(data?.id)}
+              className="flex-1"
+            >
+              <Button btnStyleType="transparent" className="w-100">
+                <FontAwesomeIcon icon={icons.update} /> update
+              </Button>
+            </Link>
+
+            <Button
+              btnStyleType="transparent"
+              btnType="delete"
+              className="flex-1"
+              onClick={() => setIsOpen(true)}
+            >
+              <FontAwesomeIcon icon={icons.delete} /> delete
             </Button>
-          </Link>
-
-          <Button
-            btnStyleType="transparent"
-            btnType="delete"
-            className="flex-1"
-            onClick={() => setIsOpen(true)}
-          >
-            <FontAwesomeIcon icon={icons.delete} /> delete
-          </Button>
-        </div>
+          </div>
+        )}
       </div>
       <ConfirmPopUp
         isOpen={isOpen}
