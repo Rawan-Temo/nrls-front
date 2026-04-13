@@ -25,7 +25,12 @@ const AllPosts = () => {
   const language = useMemo(() => i18n.language, [i18n.language]);
 
   const { state } = useLocation();
-  const { tags, content_type: type, category } = state || {};
+  const {
+    tags,
+    content_type: type,
+    category,
+    content_type_multi,
+  } = state || {};
 
   const content_type = useMemo(() => {
     if (type) return type;
@@ -37,18 +42,18 @@ const AllPosts = () => {
 
   const [debouncedValue] = useDebounce(searchParam, 500);
 
-  const [filters, setFilters] = useState({
-    tags,
-    content_type: content_type,
-    category,
-  });
+  const [filters, setFilters] = useState({});
 
   const finalFilters = useMemo(
     () => ({
       ...filters,
       search: debouncedValue,
+      tags,
+      content_type: content_type,
+      category,
+      content_type_multi,
     }),
-    [filters, debouncedValue],
+    [filters, debouncedValue, tags, content_type, category, content_type_multi],
   );
 
   const [sort, setSort] = useState({ created_at: "-created_at" });

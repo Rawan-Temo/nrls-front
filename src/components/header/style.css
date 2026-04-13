@@ -70,7 +70,7 @@
   align-items: center;
 }
 
-.bottom-header nav a {
+.bottom-header nav .link {
   position: relative;
   padding: 7px;
   border-radius: 30px;
@@ -80,15 +80,17 @@
   align-items: center;
   gap: 5px;
   color: var(--font-color);
+  cursor: pointer;
 }
 
-.bottom-header nav a:hover,
-.bottom-header nav a.active {
+.bottom-header nav .link:hover,
+.bottom-header nav .link.active,
+.bottom-header nav .link:has(.active) {
   background-color: var(--main-color);
   color: white;
 }
 
-.bottom-header nav a article {
+.bottom-header nav .link article {
   position: absolute;
   top: calc(100% + 5px);
   left: 0;
@@ -106,20 +108,21 @@
   transform: translateY(10px);
 }
 
-.bottom-header nav a:hover article {
+.bottom-header nav .link:hover article {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.bottom-header nav a article p {
+.bottom-header nav .link article a {
   padding: 5px 8px;
   border-radius: 6px;
   cursor: pointer;
   color: var(--font-color);
 }
 
-.bottom-header nav a article p:hover {
+.bottom-header nav .link article a:hover,
+.bottom-header nav .link article a.active {
   background-color: var(--main-color);
   color: white;
 }

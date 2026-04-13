@@ -3,17 +3,18 @@ import "keen-slider/keen-slider.min.css";
 import { useFetchData } from "../../../../hooks/useFetchData";
 import endPoints from "../../../../constant/endPoints";
 import Skeleton from "../../../../components/skeleton/Skeleton";
-import PostCard from "./../../../../components/post/PostCard";
+import PostCard from "../../../../components/post/PostCard";
 import { homeRoutes } from "../../../../constant/pageRoutes";
 import MainTitle from "../../../../components/main_title/MainTitle";
+import { topicTyps } from "../../../../constant/enums";
 
-const ReportNews = ({ language }) => {
+const TopicsNews = ({ language }) => {
   const { data, isLoading } = useFetchData({
     endPoints: endPoints.posts,
     page_size: 5,
     ordering: { created_at: "-created_at" },
     language,
-    content_type: "report",
+    content_type_multi: topicTyps,
     is_published: true,
   });
 
@@ -37,8 +38,8 @@ const ReportNews = ({ language }) => {
 
   return (
     <section className="container main-section body-color">
-      <MainTitle state={{ content_type: "report" }} name="report">
-        تقارير
+      <MainTitle state={{ content_type_multi: topicTyps }} name="topics">
+        topics
       </MainTitle>
 
       <main className="reports-container keen-slider" ref={sliderRef}>
@@ -56,4 +57,4 @@ const ReportNews = ({ language }) => {
   );
 };
 
-export default ReportNews;
+export default TopicsNews;

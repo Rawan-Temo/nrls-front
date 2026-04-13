@@ -15,14 +15,15 @@ import dateFormatter from "../../../../utils/dateFormatter";
 import { homeRoutes } from "../../../../constant/pageRoutes";
 import { useCallback } from "react";
 import MainTitle from "../../../../components/main_title/MainTitle";
+import { mediaTyps } from "../../../../constant/enums";
 
-const Topics = ({ language }) => {
+const MediaNews = ({ language }) => {
   const { data, isLoading } = useFetchData({
     endPoints: endPoints.posts,
     page_size: 4,
     ordering: { created_at: "-created_at" },
     language,
-    content_type: "dialogue_session",
+    content_type_multi: mediaTyps,
     is_published: true,
   });
   const stopPropagation = useCallback((e) => e.stopPropagation(), []);
@@ -46,11 +47,8 @@ const Topics = ({ language }) => {
 
   return (
     <section className="container main-section">
-      <MainTitle
-        state={{ content_type: "dialogue_session" }}
-        name="dialogue_session"
-      >
-        موضوعات وقضايا
+      <MainTitle state={{ content_type_multi: mediaTyps }} name="media">
+        media
       </MainTitle>
 
       <main className="topics-container grid-2">
@@ -110,4 +108,4 @@ const Topics = ({ language }) => {
   );
 };
 
-export default Topics;
+export default MediaNews;

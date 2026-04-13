@@ -10,13 +10,13 @@ import PostCard from "../../../../components/post/PostCard";
 import { postViewImg } from "../../../../utils/postViewImg";
 import dateFormatter from "../../../../utils/dateFormatter";
 
-const Documentaries = ({ language }) => {
+const EventNews = ({ language }) => {
   const { data, isLoading } = useFetchData({
     endPoints: endPoints.posts,
     page_size: 4,
     ordering: { created_at: "-created_at" },
     language,
-    content_type: "documentary",
+    content_type: "event",
     is_published: true,
   });
 
@@ -33,8 +33,8 @@ const Documentaries = ({ language }) => {
 
   return (
     <section className="container main-section documentaries">
-      <MainTitle state={{ content_type: "documentary" }} name={"documentary"}>
-        وثائقيات ولقاءات
+      <MainTitle state={{ content_type: "event" }} name={"event"}>
+        events
       </MainTitle>
 
       <main className="grid-3">
@@ -81,4 +81,4 @@ const Documentaries = ({ language }) => {
   );
 };
 
-export default Documentaries;
+export default EventNews;

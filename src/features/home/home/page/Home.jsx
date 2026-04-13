@@ -1,8 +1,8 @@
 import "../style/home.css";
-import ReportNews from "../components/ReportNews";
-import Topics from "../components/Topics";
-import Documentaries from "../components/Documentaries";
-import Infographic from "../components/Infographic";
+import TopicsNews from "../components/TopicsNews";
+import MediaNews from "../components/MediaNews";
+import EventNews from "../components/EventNews";
+import SurveyNews from "../components/SurveyNews";
 import Publications from "../components/Publications";
 import LastNews from "../components/LastNews";
 import { useTranslation } from "react-i18next";
@@ -16,13 +16,13 @@ const Home = () => {
     <div className="sub-news-container">
       <LastNews language={language} />
 
-      <ReportNews language={language} />
+      <TopicsNews language={language} />
 
-      <Topics language={language} />
+      <MediaNews language={language} />
 
-      <Documentaries language={language} />
+      <EventNews language={language} />
 
-      <Infographic language={language} />
+      <SurveyNews language={language} />
 
       <Publications />
     </div>

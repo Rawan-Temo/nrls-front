@@ -5,13 +5,13 @@ import { useFetchData } from "../../../../hooks/useFetchData";
 import SecondStyleMainNews from "./SecondStyleMainNews";
 import SecondStyleSubNews from "./SecondStyleSubNews";
 
-const Infographic = ({ language }) => {
+const SurveyNews = ({ language }) => {
   const { data, isLoading } = useFetchData({
     endPoints: endPoints.posts,
     page_size: 7,
     ordering: { created_at: "-created_at" },
     language,
-    content_type: "infographic",
+    content_type: "survey",
     is_published: true,
   });
 
@@ -28,8 +28,8 @@ const Infographic = ({ language }) => {
 
   return (
     <section className="container main-section">
-      <MainTitle state={{ content_type: "infographic" }} name={"infographic"}>
-        اينفوغرافيك
+      <MainTitle state={{ content_type: "survey" }} name={"survey"}>
+        survey
       </MainTitle>
 
       <main className="news-style-2">
@@ -44,4 +44,4 @@ const Infographic = ({ language }) => {
   );
 };
 
-export default Infographic;
+export default SurveyNews;
