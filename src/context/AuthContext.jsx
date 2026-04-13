@@ -88,7 +88,7 @@ export const AuthProvider = () => {
 
           try {
             const { data } = await axiosInstance.post(endPoints.refresh);
-            const newToken = data.accessToken;
+            const newToken = data.access_token;
 
             axiosInstance.defaults.headers.common["Authorization"] =
               `Bearer ${newToken}`;

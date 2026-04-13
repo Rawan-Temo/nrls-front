@@ -50,7 +50,9 @@ const Header = () => {
             <FontAwesomeIcon icon={faMoon} className="mode" />
           </Tooltip>
         </div>
+
         <Link className="logo" to={"/"}>
+          مركز روجافا للدراسات الاستراتيجية
           <img src={Logo} alt="" />
         </Link>
       </div>
