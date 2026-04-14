@@ -248,6 +248,7 @@
   flex: 200px;
   overflow: hidden;
   border-radius: 6px;
+  max-height: 150px;
 }
 .topics-container .topic .img img {
   height: 100%;

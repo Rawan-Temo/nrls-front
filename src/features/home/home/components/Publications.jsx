@@ -1,6 +1,7 @@
 import MainTitle from "../../../../components/main_title/MainTitle";
 import Skeleton from "../../../../components/skeleton/Skeleton";
 import endPoints from "../../../../constant/endPoints";
+import { publicationTyps } from "../../../../constant/enums";
 import { useFetchData } from "../../../../hooks/useFetchData";
 import SecondStyleMainNews from "./SecondStyleMainNews";
 import SecondStyleSubNews from "./SecondStyleSubNews";
@@ -11,7 +12,7 @@ const Publications = ({ language }) => {
     page_size: 5,
     ordering: { created_at: "-created_at" },
     language,
-    content_type: "publication",
+    content_type_multi: publicationTyps,
     is_published: true,
   });
 
@@ -28,7 +29,10 @@ const Publications = ({ language }) => {
 
   return (
     <section className="container main-section body-color">
-      <MainTitle state={{ content_type: "publication" }} name={"publication"}>
+      <MainTitle
+        state={{ content_type_multi: publicationTyps }}
+        name={"publication"}
+      >
         publication
       </MainTitle>
       <main className="news-style-2 publications">

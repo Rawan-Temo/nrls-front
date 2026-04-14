@@ -13,6 +13,8 @@ import useDarkMode from "./../../hooks/useDarkMode";
 import { homeRoutes } from "../../constant/pageRoutes";
 import Search from "./Search";
 import { useAuth } from "../../context/AuthContext";
+import { mediaTyps, publicationTyps, topicTyps } from "../../constant/enums";
+import NestedMenu from "./NestedMenu";
 
 const Header = () => {
   const { user } = useAuth();
@@ -56,66 +58,41 @@ const Header = () => {
           <img src={Logo} alt="" />
         </Link>
       </div>
+
       <div className="bottom-header container">
         <nav>
-          <NavLink to={"/"}>home</NavLink>
-
-          <NavLink to={"/test"}>
-            <div>
-              موضوعات وقضايا <FontAwesomeIcon icon={faChevronDown} />
-            </div>
-            <article>
-              <p>دراسات </p>
-              <p>تحليلات</p>
-              <p>مقال رأي </p>
-              <p>ملفات</p>
-            </article>
+          <NavLink to={"/"} className="link">
+            home
           </NavLink>
 
-          <NavLink to={"/dsa"}>
-            <div>
-              وسائط <FontAwesomeIcon icon={faChevronDown} />
-            </div>
-            <article>
-              <p>test</p>
-            </article>
+          <NestedMenu name={"topics"} values={topicTyps} />
+          <NestedMenu name={"media"} values={mediaTyps} />
+          <NestedMenu name={"publication"} values={publicationTyps} />
+
+          <NavLink to={"/event"} className="link">
+            event
           </NavLink>
 
-          <NavLink to={"/dsa"}>
-            <div>
-              فعاليات و نشاطات <FontAwesomeIcon icon={faChevronDown} />
-            </div>
-            <article>
-              <p>test</p>
-            </article>
+          <NavLink to={"/survey"} className="link">
+            survey
           </NavLink>
 
-          <NavLink to={"/dsa"}>
-            <div>
-              استبيانات <FontAwesomeIcon icon={faChevronDown} />
-            </div>
-            <article>
-              <p>test</p>
-            </article>
+          <NavLink to={homeRoutes.about} className="link">
+            about
           </NavLink>
 
-          <NavLink to={"/dsa"}>
-            <div>
-              اصدارات
-              <FontAwesomeIcon icon={faChevronDown} />
-            </div>
-            <article>
-              <p>test</p>
-            </article>
+          <NavLink to={homeRoutes.contact} className="link">
+            contact us
           </NavLink>
-
-          <NavLink to={homeRoutes.about}>about</NavLink>
-          <NavLink to={homeRoutes.contact}>contact us</NavLink>
 
           {user ? (
-            <NavLink to={homeRoutes.dashboard}>dashboard</NavLink>
+            <NavLink to={homeRoutes.dashboard} className="link">
+              dashboard
+            </NavLink>
           ) : (
-            <NavLink to={homeRoutes.login}>login</NavLink>
+            <NavLink to={homeRoutes.login} className="link">
+              login
+            </NavLink>
           )}
         </nav>
 
