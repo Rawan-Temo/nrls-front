@@ -3,18 +3,23 @@ import {
   faChartLine,
   faMoon,
   faSignOut,
+  faMagnifyingGlass,
+
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import IconButton from "../../../components/buttons/IconButton";
 import { useState } from "react";
+import{useClickOutside} from "./../../../hooks/useClickOutside"; // أضف هذا
+
 import useDarkMode from "./../../../hooks/useDarkMode";
 import ConfirmPopUp from "../../../components/popup/ConfirmPopUp";
 import { useAuth } from "../../../context/AuthContext";
-
+import { useTranslation } from "react-i18next";
+import Language from "./Language";
 const DashboardHeader = ({ isClosed, toggleClose }) => {
   const { i18n } = useTranslation();
   const { isOpen, toggleOpen, ref, setIsOpen } = useClickOutside();
-
+  const { t } = useTranslation();
   const { logout } = useAuth();
 
   const { changeMode } = useDarkMode();
@@ -36,7 +41,7 @@ const DashboardHeader = ({ isClosed, toggleClose }) => {
           <label htmlFor="pages-search">
             <input
               type="text"
-              placeholder="type a keyword ..."
+              placeholder={t("common.search")}
               id="pages-search"
             />
             <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -44,9 +49,8 @@ const DashboardHeader = ({ isClosed, toggleClose }) => {
           <div className="icons">
             <IconButton
               color="secondry-color"
-              title="mode"
-              onClick={changeMode}
-            >
+              title={t("common.mode")}
+              onClick={changeMode}>
               <FontAwesomeIcon icon={faMoon} />
             </IconButton>
 
@@ -54,7 +58,7 @@ const DashboardHeader = ({ isClosed, toggleClose }) => {
 
             <IconButton
               color="delete"
-              title="logout"
+              title={t("common.logout")}
               styleType="transparent"
               onClick={() => setLogoutPopup(true)}
               icon={faSignOut}

@@ -33,14 +33,14 @@ const ViewPost = () => {
   if (isLoading) return <Skeleton height="400px" />;
 
   if (error) return <HandleError error={error} refetch={refetch} />;
-
+  const { t } = useTranslation();
   return (
     <>
       <Breadcrumbs replace={[{ from: id, text: data?.title }]} />
       <div className="main-section container">
         {data?.original_post && (
           <p className="original-post-action one-line-ellipsis">
-            original_post
+            {t("common.original_post")}
             <Link className="link-hover">{data?.original_post?.title}</Link>
           </p>
         )}

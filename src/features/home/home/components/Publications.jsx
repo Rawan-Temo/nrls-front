@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import MainTitle from "../../../../components/main_title/MainTitle";
 import Skeleton from "../../../../components/skeleton/Skeleton";
 import endPoints from "../../../../constant/endPoints";
@@ -26,14 +27,14 @@ const Publications = ({ language }) => {
     );
 
   if (!data?.totalCount) return;
-
+    const { t } = useTranslation();
   return (
     <section className="container main-section body-color">
       <MainTitle
         state={{ content_type_multi: publicationTyps }}
         name={"publication"}
       >
-        publication
+        {t("pages.publication")}
       </MainTitle>
       <main className="news-style-2 publications">
         <SecondStyleMainNews data={data?.data?.[0]} />

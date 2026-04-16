@@ -14,7 +14,7 @@ const DashboardSidebar = () => {
     <aside className="dashboard-sidebar">
       <nav className="links">
         {dashboardPages.map((e) => (
-          <NavLink key={e.to} to={e.to} end title={e.title}>
+          <NavLink key={e.to} to={e.to} end title={t(e.title)}>
             <FontAwesomeIcon icon={e.icon} /> <span> {t(e.title)} </span>
           </NavLink>
         ))}

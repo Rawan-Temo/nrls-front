@@ -71,7 +71,7 @@ const Filters = ({
         {!hideCreatedAtInputs && (
           <>
             <Input
-              label={`${t("enums.from")} ${t("date")}`}
+              label={`${t("common.from")} ${t("common.date")}`}
               type="date"
               value={localFilters?.["createdAt_gte"]}
               name="createdAt_gte"
@@ -79,7 +79,7 @@ const Filters = ({
               notRequired
             />
             <Input
-              label={`${t("enums.to")} ${t("date")}`}
+              label={`${t("common.to")} ${t("common.date")}`}
               type="date"
               value={localFilters?.["createdAt_lte"]}
               name="createdAt_lte"

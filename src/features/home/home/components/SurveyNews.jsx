@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import MainTitle from "../../../../components/main_title/MainTitle";
 import Skeleton from "../../../../components/skeleton/Skeleton";
 import endPoints from "../../../../constant/endPoints";
@@ -6,6 +7,7 @@ import SecondStyleMainNews from "./SecondStyleMainNews";
 import SecondStyleSubNews from "./SecondStyleSubNews";
 
 const SurveyNews = ({ language }) => {
+  const {t} = useTranslation();
   const { data, isLoading } = useFetchData({
     endPoints: endPoints.posts,
     page_size: 7,
@@ -29,7 +31,7 @@ const SurveyNews = ({ language }) => {
   return (
     <section className="container main-section">
       <MainTitle state={{ content_type: "survey" }} name={"survey"}>
-        survey
+        {t("pages.survey")}
       </MainTitle>
 
       <main className="news-style-2">

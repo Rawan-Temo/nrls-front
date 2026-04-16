@@ -16,6 +16,7 @@ import { homeRoutes } from "../../../../constant/pageRoutes";
 import { useCallback } from "react";
 import MainTitle from "../../../../components/main_title/MainTitle";
 import { mediaTyps } from "../../../../constant/enums";
+import { useTranslation } from "react-i18next";
 
 const MediaNews = ({ language }) => {
   const { data, isLoading } = useFetchData({
@@ -27,8 +28,8 @@ const MediaNews = ({ language }) => {
     is_published: true,
   });
   const stopPropagation = useCallback((e) => e.stopPropagation(), []);
-
   const nav = useNavigate();
+  const { t } = useTranslation();
 
   const handleClick = useCallback(
     (id, name) => nav(homeRoutes.posts.view(name, id)),
@@ -44,11 +45,10 @@ const MediaNews = ({ language }) => {
     );
 
   if (!data?.totalCount) return;
-
   return (
     <section className="container main-section">
       <MainTitle state={{ content_type_multi: mediaTyps }} name="media">
-        media
+        {t("pages.media")}
       </MainTitle>
 
       <main className="topics-container grid-2">
@@ -98,7 +98,7 @@ const MediaNews = ({ language }) => {
               </div>
 
               <span className="read-more">
-                read more <FontAwesomeIcon icon={faArrowRight} />
+                {t("common.read_more")} <FontAwesomeIcon icon={faArrowRight} />
               </span>
             </article>
           </div>

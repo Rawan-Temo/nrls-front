@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { socialLinks } from "../../../../constant/socialLinks";
+import { useTranslation } from "react-i18next";
 
 const Socials = () => {
+  const {t} = useTranslation();
   return (
     <div className="socials">
       <div>
-        <h2>contact us</h2>
+        <h2>{t("pages.contact_us")}</h2>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
           cupiditate.

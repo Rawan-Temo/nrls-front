@@ -9,12 +9,11 @@ import TopHeader from "./TopHeader";
 import IconButton from "./../buttons/IconButton";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useClickOutside } from "../../hooks/useClickOutside";
-import AuthHelper from "../../utils/authHelper";
 import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const { user } = useAuth();
-
+  const { t } = useTranslation();
   const { isOpen, ref, toggleOpen } = useClickOutside();
 
   return (
@@ -26,36 +25,36 @@ const Header = () => {
 
         <nav className={isOpen ? "open" : ""}>
           <NavLink to={"/"} className="link">
-            home
+            {t("header.home")}
           </NavLink>
 
-          <NestedMenu name={"topics"} values={topicTyps} />
-          <NestedMenu name={"media"} values={mediaTyps} />
-          <NestedMenu name={"publication"} values={publicationTyps} />
+          <NestedMenu name={"topics"} values={topicTyps} t={t} />
+          <NestedMenu name={"media"} values={mediaTyps} t={t} />
+          <NestedMenu name={"publication"} values={publicationTyps} t={t} />
 
           <NavLink to={"/event"} className="link">
-            event
+            {t("header.events")}
           </NavLink>
 
           <NavLink to={"/survey"} className="link">
-            survey
+            {t("header.surveys")}
           </NavLink>
 
           <NavLink to={homeRoutes.about} className="link">
-            about
+            {t("header.about")}
           </NavLink>
 
           <NavLink to={homeRoutes.contact} className="link">
-            contact us
+            {t("header.contact")}
           </NavLink>
 
           {user ? (
             <NavLink to={homeRoutes.dashboard} className="link">
-              dashboard
+              {t("header.dashboard")}
             </NavLink>
           ) : (
             <NavLink to={homeRoutes.login} className="link">
-              login
+              {t("header.login")}
             </NavLink>
           )}
         </nav>

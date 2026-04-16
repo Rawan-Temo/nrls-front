@@ -19,7 +19,6 @@ import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icons } from "../../../../../constant/icons";
 import Button from "../../../../../components/buttons/Button";
-
 const column = [
   {
     name: "username",

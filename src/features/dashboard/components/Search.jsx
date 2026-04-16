@@ -8,7 +8,6 @@ import { Link } from "react-router";
 const Search = () => {
   const [search, setSearch] = useState("");
 
-  const { t } = useTranslation();
 
   const resluts = useMemo(() => {
     if (!search) return;
@@ -21,6 +20,7 @@ const Search = () => {
   }, [search, t]);
 
   const onNavigate = useCallback(() => setSearch(""), []);
+  const { t } = useTranslation();
 
   return (
     <div className="flex-1 search relative">

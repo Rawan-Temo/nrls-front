@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
  * @property {string} [to]
  * @property {string} [text]
  * @property {boolean} [fullPath=false]
+ * @property {boolean} [fullTextReplace=false]
  * @property {boolean} [ignore=false]
  * @property {Object} [props]
  */
@@ -60,9 +61,13 @@ const Breadcrumbs = ({ replace = [] }) => {
         return (
           <span key={defaultTo}>
             {isLast ? (
-              <span className="current">{t(`pages.${text}`)}</span>
+              <span className="current">
+                {replaceItem?.fullTextReplace ? text : t(`pages.${text}`)}
+              </span>
             ) : (
-              <Link to={to}>{t(`pages.${text}`)}</Link>
+              <Link to={to}>
+                {replaceItem?.fullTextReplace ? text : t(`pages.${text}`)}
+              </Link>
             )}
           </span>
         );

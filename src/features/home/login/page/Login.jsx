@@ -7,17 +7,19 @@ import axiosInstance from "../../../../utils/axios";
 import endPoints from "./../../../../constant/endPoints";
 import { useNavigate } from "react-router";
 import { dashboardRouts } from "../../../../constant/pageRoutes";
-
+import { useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from 'react-i18next';
 const Login = () => {
   const nav = useNavigate();
 
   const query = useQueryClient();
+  const { t } = useTranslation();
 
   const formik = useFormik({
     initialValues: { username: "", password: "" },
     validationSchema: yup.object({
-      username: yup.string().required("pages.home"),
-      password: yup.string().required(),
+      username: yup.string().required(t("validation.required")),
+      password: yup.string().required(t("validation.required")),
     }),
     onSubmit: async (v) => {
       await axiosInstance.post(endPoints.login, v);
@@ -25,7 +27,6 @@ const Login = () => {
       nav(dashboardRouts.user.page);
     },
   });
-  const { t } = useTranslation();
   return (
     <section className="container main-section">
       <form onSubmit={formik.handleSubmit} className="login-form">

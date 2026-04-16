@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { colors } from "../../../../../constant/colors";
 import dateFormatter from "../../../../../utils/dateFormatter";
+import { useTranslation } from "react-i18next";
 
 const SideBarMainInfo = ({
   data,
@@ -9,14 +10,15 @@ const SideBarMainInfo = ({
   language,
   showPublishStatus,
 }) => {
+  const {t} = useTranslation();
   return (
     <>
-      <p className="section-title">post info</p>
+      <p className="section-title">{t("common.post_info")}</p>
 
       <div className="main-info">
         {data?.original_post && (
           <div>
-            <p>original_post</p>
+            <p>{t("common.original_post")}</p>
             <Link className="link-hover" to={view}>
               {data?.original_post?.title}
             </Link>
@@ -25,7 +27,7 @@ const SideBarMainInfo = ({
 
         {showPublishStatus && (
           <div>
-            <p>is_published</p>
+            <p>{t("common.is_published")}</p>
             <span
               className="enum"
               style={{
@@ -33,31 +35,31 @@ const SideBarMainInfo = ({
                   colors[data?.is_published ? "green" : "red"].color,
               }}
             >
-              {data?.is_published ? "yes" : "no"}
+              {data?.is_published ? t("common.yes") : t("common.no")}
             </span>
           </div>
         )}
 
         <div>
-          <p>content_type</p>
+          <p>{t("common.content_type")}</p>
           <span
             className="enum"
             style={{
               "--main-color": `var(--color-${data?.content_type})`,
             }}
           >
-            {data?.content_type}
+            {t(`content_types.${data?.content_type}`)}
           </span>
         </div>
 
         <div>
-          <p>category</p>
+          <p>{t("common.category")}</p>
           <span> {data?.category?.[`name_${language}`]} </span>
         </div>
 
         {data?.author && (
           <div>
-            <p>author</p>
+            <p>{t("common.author")}</p>
             <Link className="link-hover" to={authorView(data?.author?.id)}>
               {data?.author?.full_name}
             </Link>
@@ -66,23 +68,23 @@ const SideBarMainInfo = ({
 
         {data?.published_at && (
           <div>
-            <p>published_at</p>
+            <p>{t("common.published_at")}</p>
             <span> {dateFormatter(data?.published_at)} </span>
           </div>
         )}
 
         <div>
-          <p>created_at</p>
+          <p>{t("common.created_at")}</p>
           <span> {dateFormatter(data?.created_at, "fullDate")} </span>
         </div>
 
         <div>
-          <p>updated_at</p>
+          <p>{t("common.updated_at")}</p>
           <span> {dateFormatter(data?.updated_at, "fullDate")} </span>
         </div>
 
         <div>
-          <p>view_count</p>
+          <p>{t("common.view_count")}</p>
           <span> {data?.view_count} </span>
         </div>
       </div>
