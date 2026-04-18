@@ -144,6 +144,15 @@
   flex: 1;
   height: 5px;
   background-color: var(--section-color);
+  position: relative;
+}
+.statistic-details .percent div::after {
+  content: attr(data-percent);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60%;
 }
 
 .statistic-details .percent span {

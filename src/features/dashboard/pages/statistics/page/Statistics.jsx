@@ -109,7 +109,7 @@ const Statistics = () => {
           </h2>
 
           {Object.entries(data?.by_language)?.map(([key, value]) => {
-            const percent = parseInt(getPercent(value, data?.total_posts));
+            const percent = getPercent(value, data?.total_posts).toFixed(1);
             const search = key.toLowerCase();
             const lang = languages.find(
               (lang) => lang.value.toLowerCase() === search,
@@ -118,7 +118,7 @@ const Statistics = () => {
             return (
               <div className="percent" key={key}>
                 <p>{lang?.title}</p>
-                <div>
+                <div data-percent={`${percent}%`}>
                   <span style={{ width: `${percent}%` }}></span>
                 </div>
                 <h3>{value}</h3>
@@ -129,18 +129,21 @@ const Statistics = () => {
 
         <div className="statistic-container">
           <h2>
-            <FontAwesomeIcon icon={icons.category} />{" "}
+            <FontAwesomeIcon icon={icons.category} />
             {t("statistics.posts_by_type")}
           </h2>
 
           {Object.entries(data?.by_content_type)?.map(([key, value]) => {
             const search = key.toLowerCase();
-            const percent = parseInt(getPercent(value, data?.total_posts));
+            const percent = getPercent(value, data?.total_posts).toFixed(1);
 
             return (
               <div className="percent" key={key}>
                 <p>{t(`content_types.${search}`, search)}</p>
-                <div style={{ "--main-color": `var(--color-${search})` }}>
+                <div
+                  style={{ "--main-color": `var(--color-${search})` }}
+                  data-percent={`${percent}%`}
+                >
                   <span style={{ width: `${percent}%` }}></span>
                 </div>
                 <h3>{value}</h3>
