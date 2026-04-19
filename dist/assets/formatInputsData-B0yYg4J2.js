@@ -1,0 +1,1 @@
+const e=(e={})=>{let t={};for(let[n,r]of Object.entries(e))Array.isArray(r)?t[n]=r.map(e=>e?.id??e?.value??e):r!==null&&(t[n]=r?.id??r?.value??r);return t};export{e as t};

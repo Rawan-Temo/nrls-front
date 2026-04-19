@@ -1,0 +1,1 @@
+import{a as e,n as t}from"./index.esm-CRyDddW5.js";const n=t({name_ar:e().required(`validation.required`).min(2,`validation.min_length`).max(30),name_en:e().required(`validation.required`).min(2,`validation.min_length`).max(30),name_ku:e().required(`validation.required`).min(2,`validation.min_length`).max(30)});export{n as t};

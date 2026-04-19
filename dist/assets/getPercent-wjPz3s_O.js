@@ -1,0 +1,1 @@
+const e=(e,t)=>e/t*100;export{e as t};

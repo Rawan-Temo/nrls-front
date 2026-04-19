@@ -1,0 +1,1 @@
+var e=(e,t=`justYear`,n)=>{let r=new Date(e),i=r.getFullYear(),a=String(r.getMonth()+1).padStart(2,`0`),o=String(r.getDate()).padStart(2,`0`);if(t===`justYear`)return`${i}-${a}-${o}`;let s=r.getHours(),c=s>12?s-12:s,l=s>12?`PM`:`AM`;return`${i}-${a}-${o} / ${String(c).padStart(2,`0`)}:${String(r.getMinutes()).padStart(2,`0`)} ${n?n(`enums.${l}`):l}`};export{e as t};
