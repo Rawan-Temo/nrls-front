@@ -1,1 +1,0 @@
-import{t as e}from"./useQuery-BH6YJ8oJ.js";import{_ as t}from"./index-B5laQJhN.js";const n=({endPoints:n,enabled:r=!0,...i})=>{let a=new t(n);return e({queryKey:[n,i],queryFn:()=>a.getAll({...i}),enabled:r})};export{n as t};
