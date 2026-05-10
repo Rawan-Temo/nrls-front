@@ -1,0 +1,1 @@
+var e=[`dialogue_session`,`forum`,`meeting`,`center_news`],t=[`image`,`video`,`pdf`,`audio`];export{t as n,e as t};
