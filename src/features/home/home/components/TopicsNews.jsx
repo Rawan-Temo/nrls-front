@@ -6,17 +6,15 @@ import Skeleton from "../../../../components/skeleton/Skeleton";
 import PostCard from "../../../../components/post/PostCard";
 import { homeRoutes } from "../../../../constant/pageRoutes";
 import MainTitle from "../../../../components/main_title/MainTitle";
-import { topicTyps } from "../../../../constant/enums";
-import { useTranslation } from "react-i18next";
 
-const TopicsNews = ({ language }) => {
+const TopicsNews = ({ language, content_type }) => {
   const { data, isLoading } = useFetchData({
     endPoints: endPoints.posts,
     page_size: 5,
     ordering: { published_at: "-published_at" },
     language,
-    content_type_multi: topicTyps,
     is_published: true,
+    content_type: content_type?.id,
   });
 
   const [sliderRef] = useKeenSlider({
@@ -40,14 +38,12 @@ const TopicsNews = ({ language }) => {
       },
       "(max-width: 480px)": {
         slides: {
-          perView: 1,
+          perView: 1.2,
           spacing: 8,
         },
       },
     },
   });
-
-  const { t } = useTranslation();
 
   if (isLoading)
     return (
@@ -62,9 +58,7 @@ const TopicsNews = ({ language }) => {
 
   return (
     <section className="container main-section body-color">
-      <MainTitle state={{ content_type_multi: topicTyps }} name="topics">
-        {t("pages.topics")}
-      </MainTitle>
+      <MainTitle content_type={content_type} lang={language} />
 
       <main className="reports-container keen-slider" ref={sliderRef}>
         {data?.data?.map((e) => (
@@ -72,7 +66,7 @@ const TopicsNews = ({ language }) => {
             authorPage={homeRoutes.author.view}
             data={e}
             key={e.id}
-            postPage={(e) => homeRoutes.posts.view(e?.content_type, e.id)}
+            postPage={(e) => homeRoutes.posts.view(content_type?.name_en, e.id)}
             className={"card-style-1 keen-slider__slide"}
           />
         ))}

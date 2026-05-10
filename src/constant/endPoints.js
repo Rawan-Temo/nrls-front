@@ -19,6 +19,7 @@ const endPoints = {
   postFiles: "media-files/by-post/",
   surveyPost: "surveys/by-post/",
   backup: "backup/",
+  contentType: "content-type/",
   statistics: "posts/statistics/",
 };
 

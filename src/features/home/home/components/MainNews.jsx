@@ -6,13 +6,18 @@ import { useCallback } from "react";
 import { homeRoutes } from "../../../../constant/pageRoutes";
 import { postViewImg } from "./../../../../utils/postViewImg";
 
-const MainNews = ({ data, language, t }) => {
+const MainNews = ({ data, language }) => {
   const nav = useNavigate();
   const handleNavigate = useCallback(
-    () => nav(homeRoutes.posts.view(data?.content_type, data?.id)),
+    () =>
+      nav(homeRoutes.posts.view(data?.content_type?.name_en, data?.id), {
+        state: { content_type: data?.content_type },
+      }),
     [data, nav],
   );
+
   const stopPropagation = useCallback((e) => e.stopPropagation(), []);
+
   if (!data) return;
 
   return (
@@ -20,24 +25,28 @@ const MainNews = ({ data, language, t }) => {
       <img src={postViewImg(data)} alt="" />
       <article>
         <div className="btns">
-          <Link
-            className="type"
-            style={{
-              "--main-color": `var(--color-${data?.content_type})`,
-            }}
-            to={homeRoutes.posts.page(data?.content_type)}
-            onClick={stopPropagation}
-            state={{ content_type: data.content_type }}
-          >
-            {t(`content_types.${data?.content_type}`)}
-          </Link>
-          <Link
-            to={homeRoutes.posts.page(data?.category?.[`name_${language}`])}
-            onClick={stopPropagation}
-            state={{ category: data.category }}
-          >
-            {data?.category?.[`name_${language}`] || data?.category_name}
-          </Link>
+          {data?.content_type && (
+            <Link
+              className="type"
+              to={homeRoutes.posts.page(
+                data?.content_type?.[`name_${language}`],
+              )}
+              onClick={stopPropagation}
+              state={{ content_type: data.content_type }}
+            >
+              {data?.content_type?.[`name_${language}`]}
+            </Link>
+          )}
+
+          {data?.category && (
+            <Link
+              to={homeRoutes.posts.page(data?.category?.[`name_${language}`])}
+              onClick={stopPropagation}
+              state={{ category: data.category }}
+            >
+              {data?.category?.[`name_${language}`] || data?.category_name}
+            </Link>
+          )}
         </div>
         <h2 className="two-line-ellipsis">{data.title}</h2>
         <p className="two-line-ellipsis">{data.excerpt}</p>

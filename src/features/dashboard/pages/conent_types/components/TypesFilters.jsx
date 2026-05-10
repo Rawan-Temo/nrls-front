@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import { useTranslation } from "react-i18next";
 
-const TagsFilter = ({ filters, setFilters, setPage }) => {
+const TypesFilters = ({ filters, setFilters, setPage }) => {
   const [local, setLocal] = useState(filters);
 
   const [debouncedValue] = useDebounce(local, 500);
@@ -19,8 +19,15 @@ const TagsFilter = ({ filters, setFilters, setPage }) => {
     [],
   );
   const { t } = useTranslation();
+
   return (
-    <Filters filters={filters} setFilters={setFilters}>
+    <Filters
+      filters={filters}
+      setFilters={setFilters}
+      FromToFields={[
+        { name: "priority", label: "content_types.priority", type: "number" },
+      ]}
+    >
       <Input
         name="name_ar"
         placeholder={t("tags.search_by_ar")}
@@ -49,4 +56,4 @@ const TagsFilter = ({ filters, setFilters, setPage }) => {
   );
 };
 
-export default TagsFilter;
+export default TypesFilters;
