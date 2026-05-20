@@ -201,7 +201,7 @@
     "posts_by_language": "Postên li gorî ziman",
     "posts_by_type": "Postên li gorî cureyê"
   },
-  "posts": {
+  "posts_page": {
     "featured_image": "Wêneyê postê",
     "title": "Sernav",
     "content": "Naverok",
@@ -393,7 +393,7 @@
       "delete_success": "Destûr bi serkeftî hate jêbirin"
     }
   },
-  "tags": {
+  "tags_page": {
     "name_ar": "Nav bi erebî",
     "name_en": "Nav bi îngilîzî",
     "name_ku": "Nav bi kurmancî",
@@ -500,6 +500,8 @@
   "publication": "Weşan",
   "add_author": "Nivîskar zêde bike",
   "add_tag": "Etîket zêde bike",
+  "posts": "Post",
+  "tags": "Etîket",
   "add_category": "Beş zêde bike",
   "add_event": "çalakî zêde bike"
 }

@@ -202,7 +202,7 @@
     "posts_by_language": "المنشورات حسب اللغة",
     "posts_by_type": "المنشورات حسب النوع"
   },
-  "posts": {
+  "posts_page": {
     "featured_image": "صورة العرض",
     "title": "العنوان",
     "content": "المحتوى",
@@ -394,7 +394,7 @@
       "delete_success": "تم حذف الصلاحية بنجاح"
     }
   },
-  "tags": {
+  "tags_page": {
     "name_ar": "الاسم بالعربية",
     "name_en": "الاسم بالإنجليزية",
     "name_ku": "الاسم بالكردية",
@@ -492,6 +492,8 @@
   "survey": "استبيانات",
   "dialogue_session": "جلسة الحوار",
   "contact_us": "اتصل بنا",
+  "tags": "العلامات",
+  "posts": "المنشورات",
   "media": "الوسائط",
   "breaking_news": "الأحدث",
   "topics": "المواضيع",

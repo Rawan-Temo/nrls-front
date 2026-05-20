@@ -191,7 +191,8 @@ const UpdatePost = () => {
       <PostTabs errors={formik.errors} setTab={setTab} tab={tab}>
         <p
           className={`${tab === "files" ? "active" : ""} ${Object.keys(mediaFormik.errors)?.length ? "error" : ""}`}
-          onClick={() => setTab("files")}>
+          onClick={() => setTab("files")}
+        >
           {t("pages.files")}
         </p>
         <Link to={dashboardRouts.post.addSurvey(id)} state={data}>
@@ -210,7 +211,7 @@ const UpdatePost = () => {
         {tab === "image" && (
           <UploadPhoto
             name="featured_image"
-            title={t("posts.featured_image")}
+            title={t("posts_page.featured_image")}
             errorText={t(formik.errors?.featured_image)}
             notRequired
             value={formik.values.featured_image}

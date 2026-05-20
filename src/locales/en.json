@@ -201,7 +201,7 @@
     "posts_by_language": "Posts by language",
     "posts_by_type": "Posts by type"
   },
-  "posts": {
+  "posts_page": {
     "featured_image": "Featured image",
     "title": "Title",
     "content": "Content",
@@ -393,7 +393,7 @@
       "delete_success": "Permission deleted successfully"
     }
   },
-  "tags": {
+  "tags_page": {
     "name_ar": "Name in Arabic",
     "name_en": "Name in English",
     "name_ku": "Name in Kurdish",
@@ -492,6 +492,7 @@
   "survey": "Survey",
   "dialogue_session": "Dialogue session",
   "contact_us": "Contact us",
+  "posts": "Posts",
   "media": "Media",
   "breaking_news": "Latest",
   "topics": "Topics",
@@ -500,6 +501,7 @@
   "publication": "Publications",
   "add_author": "Add author",
   "add_tag": "Add tag",
+  "tags": "Tags",
   "add_category": "Add category",
   "add_event": "Add event"
 }

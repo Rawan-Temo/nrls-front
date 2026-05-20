@@ -41,8 +41,8 @@ const AddSurvey = ({ formik, t }) => {
           value={formik.values.question}
           onChange={formik.handleChange}
           errorText={t(formik.errors.question)}
-          label={t("posts.question")}
-          placeholder={t("posts.question_placeholder")}
+          label={t("posts_page.question")}
+          placeholder={t("posts_page.question_placeholder")}
           elementType="textarea"
           rows={2}
         />
@@ -59,14 +59,16 @@ const AddSurvey = ({ formik, t }) => {
         <SelectOptionInput
           onSelectOption={(e) => formik.setFieldValue("is_active", e.value)}
           placeholder={
-            formik?.values?.is_active ? t("posts.active") : t("posts.inactive")
+            formik?.values?.is_active
+              ? t("posts_page.active")
+              : t("posts_page.inactive")
           }
           errorText={t(formik.errors?.is_active)}
-          label={t("posts.is_active")}
+          label={t("posts_page.is_active")}
           notRequired
           options={[
-            { text: t("posts.active"), value: true },
-            { text: t("posts.inactive"), value: false },
+            { text: t("posts_page.active"), value: true },
+            { text: t("posts_page.inactive"), value: false },
           ]}
         />
 
@@ -76,8 +78,8 @@ const AddSurvey = ({ formik, t }) => {
               name={`options[${index}].option_text`}
               value={opt.option_text}
               onChange={formik.handleChange}
-              placeholder={`${t("posts.option_placeholder")} ${index + 1}`}
-              label={`${t("posts.option")} ${index + 1}`}
+              placeholder={`${t("posts_page.option_placeholder")} ${index + 1}`}
+              label={`${t("posts_page.option")} ${index + 1}`}
               errorText={t(formik.errors?.options?.[index]?.option_text)}
               elementType="textarea"
               rows={3}
@@ -115,7 +117,7 @@ const AddSurvey = ({ formik, t }) => {
               ])
             }
           >
-            {t("posts.add_option")}
+            {t("posts_page.add_option")}
           </Button>
         </div>
       </div>

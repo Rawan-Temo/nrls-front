@@ -27,27 +27,27 @@ const CategoriesFilter = ({ filters, setFilters, t, setPage }) => {
     <Filters filters={filters} setFilters={setFilters}>
       <Input
         name="name_ar"
-        placeholder={t("tags.search_by_ar")}
+        placeholder={t("tags_page.search_by_ar")}
         value={local?.name_ar ?? ""}
         notRequired
         onChange={handleChange}
-        label={t("tags.name_ar")}
+        label={t("tags_page.name_ar")}
       />
       <Input
         name="name_en"
-        placeholder={t("tags.search_by_en")}
+        placeholder={t("tags_page.search_by_en")}
         value={local?.name_en ?? ""}
         notRequired
         onChange={handleChange}
-        label={t("tags.name_en")}
+        label={t("tags_page.name_en")}
       />
       <Input
         name="name_ku"
-        placeholder={t("tags.search_by_ku")}
+        placeholder={t("tags_page.search_by_ku")}
         value={local?.name_ku ?? ""}
         notRequired
         onChange={handleChange}
-        label={t("tags.name_ku")}
+        label={t("tags_page.name_ku")}
       />
       <SelectInputApi
         endPoint={endPoints.contentType}

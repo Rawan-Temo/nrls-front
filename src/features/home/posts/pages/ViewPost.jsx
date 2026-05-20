@@ -105,7 +105,7 @@ const ViewPost = () => {
                 author={data?.author}
                 id={id}
                 authorView={homeRoutes.author.view}
-                view={(id) => homeRoutes.posts.view(data?.content_type, id)}
+                inHome
               />
             )}
           </aside>

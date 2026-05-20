@@ -62,24 +62,24 @@ const AddCategory = () => {
             value={formik.values.name_ar}
             onChange={formik.handleChange}
             errorText={t(formik.errors.name_ar)}
-            label={t("tags.name_ar")}
-            placeholder={t("tags.name_ar_placeholder")}
+            label={t("tags_page.name_ar")}
+            placeholder={t("tags_page.name_ar_placeholder")}
           />
           <Input
             name="name_en"
             value={formik.values.name_en}
             onChange={formik.handleChange}
             errorText={t(formik.errors.name_en)}
-            label={t("tags.name_en")}
-            placeholder={t("tags.name_en_placeholder")}
+            label={t("tags_page.name_en")}
+            placeholder={t("tags_page.name_en_placeholder")}
           />
           <Input
             name="name_ku"
             value={formik.values.name_ku}
             onChange={formik.handleChange}
             errorText={t(formik.errors.name_ku)}
-            label={t("tags.name_ku")}
-            placeholder={t("tags.name_ku_placeholder")}
+            label={t("tags_page.name_ku")}
+            placeholder={t("tags_page.name_ku_placeholder")}
           />
         </div>
         <Button type="submit"> {t("common.save")} </Button>

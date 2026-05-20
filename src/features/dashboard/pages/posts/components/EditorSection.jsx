@@ -40,7 +40,7 @@ const EditorSection = ({ formik, t }) => {
         notRequired
       />
       <div className="editor inp">
-        <label>{t("posts.content")}</label>
+        <label>{t("posts_page.content")}</label>
         <Editor
           value={formik.values.content}
           onTextChange={(e) => formik.setFieldValue("content", e.htmlValue)}

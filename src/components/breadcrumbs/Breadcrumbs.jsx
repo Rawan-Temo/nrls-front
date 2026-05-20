@@ -3,6 +3,7 @@ import "./breadcrumbs.css";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { sliceText } from "../../utils/sliceText.js";
+import { homeRoutes } from "../../constant/pageRoutes.js";
 
 /**
  * @typedef {Object} ReplaceItem
@@ -27,12 +28,13 @@ import { sliceText } from "../../utils/sliceText.js";
 
 const Breadcrumbs = ({ replace = [] }) => {
   const { pathname } = useLocation();
+  const isInDashbord = pathname.startsWith(homeRoutes.dashboard);
+
   const pathes = useMemo(() => pathname.split("/").filter(Boolean), [pathname]);
 
   const className = useMemo(
-    () =>
-      `${!pathname.startsWith("/dashboard") ? "home container" : ""} breadcrumbs`,
-    [pathname],
+    () => `${!isInDashbord ? "home container" : ""} breadcrumbs`,
+    [isInDashbord],
   );
   const { t } = useTranslation();
 
@@ -66,10 +68,10 @@ const Breadcrumbs = ({ replace = [] }) => {
         return (
           <span key={defaultTo}>
             {isLast ? (
-              <span className="current">{sliceText(text)}</span>
+              <span className="current">{t(sliceText(text))}</span>
             ) : (
               <Link to={to} {...replaceItem?.props}>
-                {sliceText(text)}
+                {t(sliceText(text))}
               </Link>
             )}
           </span>

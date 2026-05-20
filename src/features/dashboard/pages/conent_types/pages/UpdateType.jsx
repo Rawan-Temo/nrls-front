@@ -63,21 +63,21 @@ const UpdateType = () => {
             value={formik.values.name_ar}
             onChange={formik.handleChange}
             errorText={t(formik.errors.name_ar)}
-            label={t("tags.name_ar")}
+            label={t("tags_page.name_ar")}
           />
           <Input
             name="name_en"
             value={formik.values.name_en}
             onChange={formik.handleChange}
             errorText={t(formik.errors.name_en)}
-            label={t("tags.name_en")}
+            label={t("tags_page.name_en")}
           />
           <Input
             name="name_ku"
             value={formik.values.name_ku}
             onChange={formik.handleChange}
             errorText={t(formik.errors.name_ku)}
-            label={t("tags.name_ku")}
+            label={t("tags_page.name_ku")}
           />
           <Input
             name="priority"
