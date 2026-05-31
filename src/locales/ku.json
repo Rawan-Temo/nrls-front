@@ -201,7 +201,7 @@
     "posts_by_language": "Postên li gorî ziman",
     "posts_by_type": "Postên li gorî cureyê"
   },
-  "posts": {
+  "posts_page": {
     "featured_image": "Wêneyê postê",
     "title": "Sernav",
     "content": "Naverok",
@@ -393,7 +393,7 @@
       "delete_success": "Destûr bi serkeftî hate jêbirin"
     }
   },
-  "tags": {
+  "tags_page": {
     "name_ar": "Nav bi erebî",
     "name_en": "Nav bi îngilîzî",
     "name_ku": "Nav bi kurmancî",
@@ -464,5 +464,44 @@
   "caption_placeholder": "Danasîna dosyayê",
   "alt_text": "Nivîsa alt (vebijarkî)",
   "alt_text_placeholder": "Nivîsa ku dema çewtiya nîşandanê tê xuyang kirin",
-  "external_url_placeholder": "Girêdanê binivîse"
+  "external_url_placeholder": "Girêdanê binivîse",
+
+  "home": "Destpêk",
+  "update": "Rojane bike",
+  "login": "Têkeve",
+  "logout": "Derkeve",
+  "dashboard": "Panela kontrolê",
+  "users": "Bikarhêner",
+  "add": "Zêde bike",
+  "add_user": "Bikarhêner zêde bike",
+  "post": "Post",
+  "add_post": "Post zêde bike",
+  "categories": "Beş",
+  "authors": "Nivîskar",
+  "backup": "Backup",
+  "analytics": "Analîz",
+  "opinion_article": "Gotarên ramanê",
+  "files": "Dosya",
+  "event": "Çalakî",
+  "infographic": "Înfografîk",
+  "video": "Vîdyo",
+  "documentary": "Belgesel",
+  "report": "Rapor",
+  "magazine": "Kovar",
+  "book": "Pirtûk",
+  "survey": "Anket",
+  "dialogue_session": "Rûniştina diyalogê",
+  "contact_us": "Li me bigere",
+  "media": "Medya",
+  "breaking_news": "Dawî",
+  "topics": "Mijar",
+  "content_type": "Cureyê naverokê",
+  "add_content_type": "Cureyê naverokê zêde bike",
+  "publication": "Weşan",
+  "add_author": "Nivîskar zêde bike",
+  "add_tag": "Etîket zêde bike",
+  "posts": "Post",
+  "tags": "Etîket",
+  "add_category": "Beş zêde bike",
+  "add_event": "çalakî zêde bike"
 }

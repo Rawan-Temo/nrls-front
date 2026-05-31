@@ -204,7 +204,7 @@ const AddPost = () => {
         {tab === "image" && (
           <UploadPhoto
             name="featured_image"
-            title={t("posts.featured_image")}
+            title={t("posts_page.featured_image")}
             errorText={t(formik.errors?.featured_image)}
             notRequired
             value={formik.values.featured_image}

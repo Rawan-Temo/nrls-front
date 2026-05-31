@@ -202,7 +202,7 @@
     "posts_by_language": "المنشورات حسب اللغة",
     "posts_by_type": "المنشورات حسب النوع"
   },
-  "posts": {
+  "posts_page": {
     "featured_image": "صورة العرض",
     "title": "العنوان",
     "content": "المحتوى",
@@ -394,7 +394,7 @@
       "delete_success": "تم حذف الصلاحية بنجاح"
     }
   },
-  "tags": {
+  "tags_page": {
     "name_ar": "الاسم بالعربية",
     "name_en": "الاسم بالإنجليزية",
     "name_ku": "الاسم بالكردية",
@@ -465,5 +465,43 @@
   "caption_placeholder": "وصف للملف",
   "alt_text": "النص المساعد (اختياري)",
   "alt_text_placeholder": "نص يظهر عند حصول خطأ في العرض",
-  "external_url_placeholder": "ادخل الرابط"
+  "external_url_placeholder": "ادخل الرابط",
+  "home": "الرئيسية",
+  "update": "تعديل",
+  "login": "تسجيل الدخول",
+  "logout": "تسجيل الخروج",
+  "dashboard": "لوحة التحكم",
+  "users": "المستخدمين",
+  "add": "إضافة",
+  "add_user": "إضافة مستخدم",
+  "post": "منشور",
+  "add_post": "إضافة منشور",
+  "categories": "الأقسام",
+  "authors": "المؤلفين",
+  "backup": "النسخ الاحتياطي",
+  "analytics": "التحليلات",
+  "opinion_article": "مقالات الرأي",
+  "files": "الملفات",
+  "event": "فعاليات",
+  "infographic": "الإحصائيات",
+  "video": "الفيديو",
+  "documentary": "الوثائقية",
+  "report": "التقارير",
+  "magazine": "الجرائد",
+  "book": "الكتب",
+  "survey": "استبيانات",
+  "dialogue_session": "جلسة الحوار",
+  "contact_us": "اتصل بنا",
+  "tags": "العلامات",
+  "posts": "المنشورات",
+  "media": "الوسائط",
+  "breaking_news": "الأحدث",
+  "topics": "المواضيع",
+  "content_type": "نوع المحتوى",
+  "add_content_type": "إضافة نوع محتوى",
+  "publication": "المنشورات",
+  "add_author": "إضافة مؤلف",
+  "add_tag": "إضافة علامة",
+  "add_category": "إضافة قسم",
+  "add_event": "إضافة فعالية"
 }

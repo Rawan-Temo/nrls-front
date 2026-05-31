@@ -46,24 +46,24 @@ const AddTag = () => {
             value={formik.values.name_ar}
             onChange={formik.handleChange}
             errorText={t(formik.errors.name_ar)}
-            label={t("tags.name_ar")}
-            placeholder={t("tags.search_by_ar")}
+            label={t("tags_page.name_ar")}
+            placeholder={t("tags_page.search_by_ar")}
           />
           <Input
             name="name_en"
             value={formik.values.name_en}
             onChange={formik.handleChange}
             errorText={t(formik.errors.name_en)}
-            label={t("tags.name_en")}
-            placeholder={t("tags.search_by_en")}
+            label={t("tags_page.name_en")}
+            placeholder={t("tags_page.search_by_en")}
           />
           <Input
             name="name_ku"
             value={formik.values.name_ku}
             onChange={formik.handleChange}
             errorText={t(formik.errors.name_ku)}
-            label={t("tags.name_ku")}
-            placeholder={t("tags.search_by_ku")}
+            label={t("tags_page.name_ku")}
+            placeholder={t("tags_page.search_by_ku")}
           />
         </div>
         <Button type="submit"> {t("common.save")} </Button>

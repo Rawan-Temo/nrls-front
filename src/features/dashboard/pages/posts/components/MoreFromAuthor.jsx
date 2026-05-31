@@ -6,8 +6,9 @@ import { Link } from "react-router";
 import Button from "../../../../../components/buttons/Button";
 import { postViewImg } from "./../../../../../utils/postViewImg";
 import { useTranslation } from "react-i18next";
+import { dashboardRouts, homeRoutes } from "../../../../../constant/pageRoutes";
 
-const MoreFromAuthor = ({ author, id, authorView, view }) => {
+const MoreFromAuthor = ({ author, id, authorView, inHome }) => {
   const { data, isLoading } = useFetchData({
     endPoints: endPoints.posts,
     author: author?.id,
@@ -38,7 +39,16 @@ const MoreFromAuthor = ({ author, id, authorView, view }) => {
       </p>
 
       {results?.data?.map((e) => (
-        <Link className="more-posts" key={e.id} to={view(e.id)}>
+        <Link
+          className="more-posts"
+          key={e.id}
+          to={
+            inHome
+              ? homeRoutes.posts.view(e.content_type?.name_en, e.id)
+              : dashboardRouts.post.view(e.id)
+          }
+          state={{ content_type: e.content_type }}
+        >
           <img src={postViewImg(e)} alt="" />
           <div>
             <h5 className="two-line-ellipsis">{e?.title}</h5>

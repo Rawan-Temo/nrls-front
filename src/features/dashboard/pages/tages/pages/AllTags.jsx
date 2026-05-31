@@ -21,17 +21,17 @@ import Button from "../../../../../components/buttons/Button";
 const column = [
   {
     name: "name_ar",
-    headerName: "tags.name_ar",
+    headerName: "tags_page.name_ar",
     sort: true,
   },
   {
     name: "name_en",
-    headerName: "tags.name_en",
+    headerName: "tags_page.name_en",
     sort: true,
   },
   {
     name: "name_ku",
-    headerName: "tags.name_ku",
+    headerName: "tags_page.name_ku",
     sort: true,
   },
   {

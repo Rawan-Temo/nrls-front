@@ -39,7 +39,9 @@ const MoreResults = ({ language, post }) => {
             key={e.id}
             data={e}
             authorPage={homeRoutes.author.view}
-            postPage={(e) => homeRoutes.posts.view(e?.content_type, e.id)}
+            postPage={(e) =>
+              homeRoutes.posts.view(e?.content_type?.name_en, e.id)
+            }
           />
         ))}
       </div>

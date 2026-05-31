@@ -3,6 +3,7 @@ import "./breadcrumbs.css";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { sliceText } from "../../utils/sliceText.js";
+import { homeRoutes } from "../../constant/pageRoutes.js";
 
 /**
  * @typedef {Object} ReplaceItem
@@ -27,12 +28,13 @@ import { sliceText } from "../../utils/sliceText.js";
 
 const Breadcrumbs = ({ replace = [] }) => {
   const { pathname } = useLocation();
+  const isInDashbord = pathname.startsWith(homeRoutes.dashboard);
+
   const pathes = useMemo(() => pathname.split("/").filter(Boolean), [pathname]);
 
   const className = useMemo(
-    () =>
-      `${!pathname.startsWith("/dashboard") ? "home container" : ""} breadcrumbs`,
-    [pathname],
+    () => `${!isInDashbord ? "home container" : ""} breadcrumbs`,
+    [isInDashbord],
   );
   const { t } = useTranslation();
 
@@ -41,7 +43,9 @@ const Breadcrumbs = ({ replace = [] }) => {
       <Link to="/"> {t("pages.home")} </Link>
 
       {pathes.map((path, i) => {
-        const replaceItem = replace.find((item) => item.from === path);
+        const replaceItem = replace.find(
+          (item) => item.from === decodeURIComponent(path),
+        );
 
         if (replaceItem?.ignore) return null;
 
@@ -57,23 +61,17 @@ const Breadcrumbs = ({ replace = [] }) => {
             replacedPath = defaultTo.replace(replaceItem.from, replaceItem.to);
         }
 
-        const text = replaceItem?.text || path;
+        const text = decodeURIComponent(replaceItem?.text || path);
 
         const to = replacedPath || defaultTo;
 
         return (
           <span key={defaultTo}>
             {isLast ? (
-              <span className="current">
-                {replaceItem?.fullTextReplace
-                  ? sliceText(text)
-                  : sliceText(t(`pages.${text}`))}
-              </span>
+              <span className="current">{t(sliceText(text))}</span>
             ) : (
               <Link to={to} {...replaceItem?.props}>
-                {replaceItem?.fullTextReplace
-                  ? sliceText(text)
-                  : sliceText(t(`pages.${text}`))}
+                {t(sliceText(text))}
               </Link>
             )}
           </span>
