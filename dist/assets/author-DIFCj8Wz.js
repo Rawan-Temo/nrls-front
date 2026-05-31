@@ -1,1 +1,0 @@
-import{a as e,n as t}from"./index.esm-DF6prvQg.js";const n=t({full_name:e().required(`validation.required`).min(2,`validation.min_length`),email:e().required(`validation.required`).email(`validation.email`),bio:e().notRequired(),profile_image:t().nullable()});export{n as t};

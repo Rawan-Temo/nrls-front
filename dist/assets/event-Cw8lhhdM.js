@@ -1,0 +1,1 @@
+import{a as e,i as t,n,r}from"./index.esm-CRyDddW5.js";import{t as i}from"./enums-46FyDlDk.js";const a=n({post:n().required(`validation.required`),event_type:e().required(`validation.required`).oneOf(i),event_date:r().required(`validation.required`),location:e().required(`validation.required`),attendess_count:t().notRequired()});export{a as t};

@@ -1,1 +1,0 @@
-import{r as e}from"./chunk-DECur_0Z.js";import{At as t,kt as n}from"./useTranslation-C2V6ej6p.js";var r=e(t(),1),i=n(),a=({children:e,count:t=1})=>Array.from({length:t}).map((t,n)=>(0,i.jsx)(r.Fragment,{children:e},n));export{a as t};
